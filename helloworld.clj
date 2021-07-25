@@ -1,4 +1,4 @@
-
+;;(require 'gnuplot)
 (defn hello-world []
   (println "Hello World"))
 (hello-world)
@@ -140,4 +140,58 @@
     (recur (inc iteration))
   )
 )
-;; I am failing to translate this to something with map + '(0 1 2 3 4)
+
+(map #(do (println %) (+ 100 %)) [0 1 2 3 4])
+(map + '(0 1 2 3 4) (repeat 100))
+;;------end: exercise
+(defn titleize
+  [topic]
+  (str topic " for the Brave and True"))
+
+(println (map #(titleize (second %)) {:uncomfortable-thing "Wanking"}))
+;;------start: reduce
+(println 
+  (reduce 
+  (fn [new-map [key val]]
+    (assoc new-map key (inc val))
+  )
+  {}
+  {:max 30 :min 10})
+)
+
+(println 
+  (reduce 
+    (fn [new-map [key val]]
+      (if (> val 4)
+        (assoc new-map key val)
+        new-map
+      )
+    )
+    {} ;;init new-map
+    {:human 4.1 :critter 3.9}
+  )
+)
+;;------end: reduce
+;;------start: take,drop....
+(println (take 3 [1 2 3 4 5 6 7 8 9 10]));; take first 3
+(println (take-while #(< % 4) [1 2 3 4 5 6 0]))
+(println (drop 3 [1 2 3 4 5 6 7 8 9 10]));; drop first 3
+(println (drop-while #(< % 4) [1 2 3 4 5 6 0]))
+
+(println (filter #(< % 4) [1 2 3 4 5 6 0]))
+
+(println (some #(> % 4) [1 2 3 4 5 6 0]));; true
+(println (some #(> % 6) [1 2 3 4 5 6 0]));; nil
+
+;;(time (first (vec (flatten (take 1000000 (repeat [1 2 3]))))))
+
+(println (take 3 (repeatedly (fn [] (rand-int 10)))))
+
+;;------end: take,drop....
+;;------start: lazy ds
+
+(defn even-numbers
+  ([] (even-numbers 0))
+  ([n] (cons n (lazy-seq (even-numbers (+ n 2))))))
+
+(println(take 10 (even-numbers)))
