@@ -1,4 +1,4 @@
-(ns basic-swarm.core)
+
 (defn sqrt [n] (java.lang.Math/sqrt n)) ;; sqrt wrapper
 (defn abs [n] (java.lang.Math/abs n)) ;; abs wrapper
 (defn pow [b n] (java.lang.Math/pow b n)) ;; pow wrapper
@@ -44,27 +44,29 @@
   (def points [[0 0]])
   (-(apply min (map (partial vec_dist position) points))))
 
+(def global_best '(-1 -1))
 (defn update_global_best
   "trys to update the global best position"
   [position]
-  (alter-var-root #'global_best (constantly (first (sort-by fitness [position global_best])))))
+  (alter-var-root #'global_best (constantly (last (sort-by fitness [position global_best])))))
 
 (defn update_particle
   "updates velocity and position of particle"
   [particle]
   (def velocity (vec_add
                  (:velocity particle)
-                 (vec_sub (:best particle) (:position particle))
-                 (vec_sub global_best (:position particle))))
-  (def position (vec_add (:position particle) (vec_mul (repeat 0.01) velocity)))
-  (def best (first (sort-by fitness [(:best particle) position])))
+                 (vec_sub  (:best particle) (:position particle))
+                 (vec_sub   global_best (:position particle))))
+  (def position (vec_add (:position particle) (vec_mul (repeat 0.1) velocity)))
+  (def best (last (sort-by fitness [(:best particle) position])))
+  ;;(println position)
   (update_global_best best)
   {:velocity velocity
    :position position
    :best best})
 
-(def global_best [-1 -1])
-(def swarm (create_random_swarm 2000))
+
+(def swarm (create_random_swarm 200))
 
 (defn ps
   [swarm counter]
