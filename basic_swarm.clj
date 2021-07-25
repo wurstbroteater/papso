@@ -68,8 +68,15 @@
    :best best})
 
 
-(def swarm (create_random_swarm 2))
+(def swarm (create_random_swarm 3))
 
 (defn ps
   [swarm counter]
-  (if (< counter 0) swarm (ps (map update_particle swarm) (dec counter))))
+  (if (<= counter 0)
+    (list swarm)
+    (cons swarm (ps (update_particle swarm) (dec counter))
+    )
+  )
+)    
+
+(println (ps swarm 3))
