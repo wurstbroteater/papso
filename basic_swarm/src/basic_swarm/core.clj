@@ -1,4 +1,5 @@
 (ns basic-swarm.core)
+
 (defn sqrt [n] (java.lang.Math/sqrt n)) ;; sqrt wrapper
 (defn abs [n] (java.lang.Math/abs n)) ;; abs wrapper
 (defn pow [b n] (java.lang.Math/pow b n)) ;; pow wrapper
@@ -19,7 +20,10 @@
 (defn vec_dist
   "calculates the distance of 2 vectors"
   [vec_a vec_b]
-  (sqrt (reduce (fn [a b] (+ a (* b b)) ) 0 (vec_sub vec_a vec_b))))
+  (sqrt (reduce
+         (fn [a b] (+ a (* b b)))
+         0
+         (vec_sub vec_a vec_b))))
 
 (defn normalize
   "normalizes the vector"
