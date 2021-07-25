@@ -1,4 +1,3 @@
-
 (defn sqrt [n] (java.lang.Math/sqrt n)) ;; sqrt wrapper
 (defn abs [n] (java.lang.Math/abs n)) ;; abs wrapper
 (defn pow [b n] (java.lang.Math/pow b n)) ;; pow wrapper
@@ -69,7 +68,7 @@
    :best best})
 
 
-(def swarm (create_random_swarm 200))
+(def swarm (create_random_swarm 2))
 
 (defn ps
   [swarm counter]
