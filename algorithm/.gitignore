@@ -1,5 +1,3 @@
-plotdata/
-
 # Project Clojure stuff
 /target
 /classes
@@ -231,6 +229,5 @@ buildNumber.properties
 .ionide
 
 # End of https://www.toptal.com/developers/gitignore/api/java,maven,intellij,visualstudiocode,eclipse
-
 
 

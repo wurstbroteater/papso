@@ -1,6 +1,6 @@
-(ns basic-swarm.core-test
+(ns algorithm.core-test
   (:require [clojure.test :refer :all]
-            [basic-swarm.core :refer :all]))
+            [algorithm.core :refer :all]))
 
 (deftest a-test
   (testing "FIXME, I fail."
