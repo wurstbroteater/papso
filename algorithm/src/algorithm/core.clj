@@ -1,5 +1,5 @@
 (ns algorithm.core)
-
+(load-file "../gnuplot.clj")
 (defn sqrt [n] (java.lang.Math/sqrt n)) ;; sqrt wrapper
 (defn abs [n] (java.lang.Math/abs n)) ;; abs wrapper
 (defn pow [b n] (java.lang.Math/pow b n)) ;; pow wrapper
@@ -57,28 +57,26 @@
 (defn update_particle
   "updates velocity and position of particle"
   [particle]
+  ;(println particle)
   (def velocity (vec_add
                   (:velocity particle)
                   (vec_sub  (:best particle) (:position particle))
                   (vec_sub   global_best (:position particle))))
   (def position (vec_add (:position particle) (vec_mul (repeat 0.1) velocity)))
   (def best (last (sort-by fitness [(:best particle) position])))
-  ;;(println position)
   (update_global_best best)
   {:velocity velocity
    :position position
    :best best})
 
 
-(def swarm (create_random_swarm 1))
+(def swarm (create_random_swarm 2))
 
 (defn ps
-  [swarm counter]
-  (if (< counter 0)
-    (identity swarm)
-    (cons swarm (ps (update_particle swarm) (dec counter))
-          )
-    )
-  )
+  [swarm count]
+  (if (= 0 count)
+    '()
+    (cons swarm (ps (map update_particle swarm) (dec count)))))
 
-(println (ps swarm 0))
+
+;;(ps swarm 1000)
