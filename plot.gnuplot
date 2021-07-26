@@ -1,7 +1,8 @@
 set term pdf
 set output "plot.pdf"
-set xrange [-1:1]
-set yrange [-1:1]
+set xrange [-150:150]
+set yrange [-150:150]
+set grid
 plot "plotdata/0.txt"
 plot "plotdata/1.txt"
 plot "plotdata/2.txt"
@@ -1002,3 +1003,27 @@ plot "plotdata/996.txt"
 plot "plotdata/997.txt"
 plot "plotdata/998.txt"
 plot "plotdata/999.txt"
+plot "plotdata/1000.txt"
+plot "plotdata/1001.txt"
+plot "plotdata/1002.txt"
+plot "plotdata/1003.txt"
+plot "plotdata/1004.txt"
+plot "plotdata/1005.txt"
+plot "plotdata/1006.txt"
+plot "plotdata/1007.txt"
+plot "plotdata/1008.txt"
+plot "plotdata/1009.txt"
+plot "plotdata/1010.txt"
+plot "plotdata/1011.txt"
+plot "plotdata/1012.txt"
+plot "plotdata/1013.txt"
+plot "plotdata/1014.txt"
+plot "plotdata/1015.txt"
+plot "plotdata/1016.txt"
+plot "plotdata/1017.txt"
+plot "plotdata/1018.txt"
+plot "plotdata/1019.txt"
+plot "plotdata/1020.txt"
+plot "plotdata/1021.txt"
+plot "plotdata/1022.txt"
+plot "plotdata/1023.txt"

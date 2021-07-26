@@ -16,6 +16,6 @@
 (defn plot_swarms
   "generates a gnuplot program to plot the swarm points"
   [swarms]
-  (spit plotfile "set term pdf\nset output \"plot.pdf\"\nset xrange [-1:1]\nset yrange [-1:1]\n")
+  (spit plotfile "set term pdf\nset output \"plot.pdf\"\nset xrange [-150:150]\nset yrange [-150:150]\nset grid\n")
   (map plot_swarm
        (map cons (range 0 (count swarms)) swarms)))

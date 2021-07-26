@@ -1,4 +1,8 @@
 (load-file "gnuplot.clj")
+(require '[clojure.string :as str])
+;; load landscape data
+(def landscape (map (fn [line] (map read-string (str/split line #"\t"))) (str/split (slurp "landscape.tsv") #"\n")))
+(def size (count landscape))
 (defn sqrt [n] (java.lang.Math/sqrt n)) ;; sqrt wrapper
 (defn abs [n] (java.lang.Math/abs n)) ;; abs wrapper
 (defn pow [b n] (java.lang.Math/pow b n)) ;; pow wrapper
@@ -29,12 +33,16 @@
   [vec]
   (vec_div vec (repeat (reduce + vec))))
 
+(defn random
+  [lower upper]
+  (+(rand (- upper lower)) lower))
+
 (defn create_random_particle
   "creates a particle for pso"
   []
-  {:velocity (take 2 (repeatedly rand))
-   :position (take 2 (repeatedly rand))
-   :best (take 2 (repeatedly rand))})
+  {:velocity (take 2 (repeatedly #(random (- size) size)))
+   :position (take 2 (repeatedly #(random (- size) size)))
+   :best (take 2 (repeatedly #(random (- size) size)))})
 
 (defn create_random_swarm
   "creates a random swarm"
@@ -44,10 +52,9 @@
 (defn fitness
   "calculates fitness for a point"
   [position]
-  (def points [[0 0]])
-  (-(apply min (map (partial vec_dist position) points))))
+  (nth (nth landscape (int (first position) ) '(0)) (int (last position)) -100 ))
 
-(def global_best '(-1 -1))
+(def global_best '(-10000 -10000))
 (defn update_global_best
   "trys to update the global best position"
   [position]
@@ -59,9 +66,9 @@
   ;(println particle)
   (def velocity (vec_add
                  (:velocity particle)
-                 (vec_sub  (:best particle) (:position particle))
-                 (vec_sub   global_best (:position particle))))
-  (def position (vec_add (:position particle) (vec_mul (repeat 0.1) velocity)))
+                 (vec_mul (repeatedly rand) (vec_sub  (:best particle) (:position particle)))
+                 (vec_mul (repeatedly rand) (vec_sub   global_best (:position particle)))))
+  (def position (vec_add (:position particle) (vec_mul (repeat 0.001) velocity)))
   (def best (last (sort-by fitness [(:best particle) position])))
   (update_global_best best)
   {:velocity velocity
@@ -69,7 +76,7 @@
    :best best})
 
 
-(def swarm (create_random_swarm 20))
+(def swarm (create_random_swarm 32))
 
 (defn ps
   [swarm count]
@@ -78,4 +85,4 @@
     (cons swarm (ps (map update_particle swarm) (dec count)))))
 
 
-(ps swarm 1000)
+(last(plot_swarms (ps swarm 1024)))
