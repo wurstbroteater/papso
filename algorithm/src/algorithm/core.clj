@@ -1,19 +1,20 @@
 (ns algorithm.core)
-(def test1 [3 5 -4])
-(def test2 [9 5 -2])
 
 (defn sqrt [n] (java.lang.Math/sqrt n))                     ;; sqrt wrapper
 (defn abs [n] (java.lang.Math/abs n))                       ;; abs wrapper
 (defn pow [b n] (java.lang.Math/pow b n))                   ;; pow wrapper
-(defn subV [v1] (map #(- %1 %2) v1))
+(defn subV [v1 v2] (vec (map - v1 v2)))                     ;; vector subtraction
+(defn sumV [v] (apply + v))                                 ; sum over a single vector
 
 (defn zip [listeA listeB]
   (if (not= (count listeA) (count listeB))
-    (throw (Exception. "zip: Not equal vector size"))
+    (throw (Exception. "zip received vectors with different dimensions!"))
     (map vector listeA listeB))
   )                                                         ;; zip wrapper
-(defn squareV [liste] (map #(* % %) liste))                  ;; square list component wise
-(defn square [n] (* n n))
+
+(defn square [n] (* n n))                                   ;; square a number
+(defn squareV [v] (vec (map square v)))                     ;; square a vector
+
 (defn createParticle []
   {:velocity (take 2 (repeatedly rand))                     ;; v vector
    :position (take 2 (repeatedly rand))                     ;; x vector
@@ -23,14 +24,10 @@
 
 (defn getParticlePos [particle] (get particle :position))
 
-(defn euclidDis
-  ([p1 p2]
-   (euclidDis (zip p1 p2) 0 (count p1) [] ))
-  ([zippedPos start end out]
-   (if (= start end)
-     (identity out)
-     (euclidDis (rest zippedPos) (inc start) end (conj out ((square (reduce - (first zippedPos))))))
-     )
+(defn euclidDis [v1 v2]
+  (if (not= (count v1) (count v2))
+    (throw (Exception. "euclidDis received vectors with different dimensions!"))
+    (sqrt (sumV (squareV (subV v1 v2))))
   ))
 
 (defn distance [particle point]
@@ -59,9 +56,6 @@
      ))
  )
 (println (start 2))
-
-
-
 
 
 
