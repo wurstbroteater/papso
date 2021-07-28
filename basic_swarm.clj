@@ -40,9 +40,10 @@
 (defn create_random_particle
   "creates a particle for pso"
   []
-  {:velocity (take 2 (repeatedly #(random (- size) size)))
-   :position (take 2 (repeatedly #(random (- size) size)))
-   :best (take 2 (repeatedly #(random (- size) size)))})
+  (def position (take 2 (repeatedly #(rand size))))
+  {:velocity (take 2 (repeatedly #(rand size)))
+   :position position
+   :best position})
 
 (defn create_random_swarm
   "creates a random swarm"
@@ -52,9 +53,9 @@
 (defn fitness
   "calculates fitness for a point"
   [position]
-  (nth (nth landscape (int (first position) ) '(0)) (int (last position)) -100 ))
+  (nth (nth landscape (int (last position) ) '(-100)) (int (first position)) -100 ))
 
-(def global_best '(-10000 -10000))
+(def global_best '(-100 -100))
 (defn update_global_best
   "trys to update the global best position"
   [position]
@@ -68,7 +69,7 @@
                  (:velocity particle)
                  (vec_mul (repeatedly rand) (vec_sub  (:best particle) (:position particle)))
                  (vec_mul (repeatedly rand) (vec_sub   global_best (:position particle)))))
-  (def position (vec_add (:position particle) (vec_mul (repeat 0.001) velocity)))
+  (def position (vec_add (:position particle) (vec_mul (repeat 0.005) velocity)))
   (def best (last (sort-by fitness [(:best particle) position])))
   (update_global_best best)
   {:velocity velocity
@@ -85,4 +86,5 @@
     (cons swarm (ps (map update_particle swarm) (dec count)))))
 
 
-(last(plot_swarms (ps swarm 1024)))
+(last(plot_swarms (ps swarm 512)))
+global_best

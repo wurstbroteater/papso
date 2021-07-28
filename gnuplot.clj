@@ -4,7 +4,7 @@
 (defn plot_swarm
   [swarm]
   (def pointfile (str "plotdata/" (first swarm) ".txt"))
-  (spit plotfile (str "plot \"" pointfile "\"\n" ) :append true)
+  (spit plotfile (str "plot \"" pointfile "\",'cont.dat' w l lt -1 lw 0.5\n" ) :append true)
   (spit pointfile
         (reduce
          str
@@ -16,6 +16,6 @@
 (defn plot_swarms
   "generates a gnuplot program to plot the swarm points"
   [swarms]
-  (spit plotfile "set term pdf\nset output \"plot.pdf\"\nset xrange [-150:150]\nset yrange [-150:150]\nset grid\n")
+  (spit plotfile "set term pdf\nset output \"plot.pdf\"\nset xrange [0:150]\nset yrange [0:150]\n")
   (map plot_swarm
        (map cons (range 0 (count swarms)) swarms)))
