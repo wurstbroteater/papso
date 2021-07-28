@@ -1,1029 +1,516 @@
 set term pdf
 set output "plot.pdf"
-set xrange [-150:150]
-set yrange [-150:150]
-set grid
-plot "plotdata/0.txt"
-plot "plotdata/1.txt"
-plot "plotdata/2.txt"
-plot "plotdata/3.txt"
-plot "plotdata/4.txt"
-plot "plotdata/5.txt"
-plot "plotdata/6.txt"
-plot "plotdata/7.txt"
-plot "plotdata/8.txt"
-plot "plotdata/9.txt"
-plot "plotdata/10.txt"
-plot "plotdata/11.txt"
-plot "plotdata/12.txt"
-plot "plotdata/13.txt"
-plot "plotdata/14.txt"
-plot "plotdata/15.txt"
-plot "plotdata/16.txt"
-plot "plotdata/17.txt"
-plot "plotdata/18.txt"
-plot "plotdata/19.txt"
-plot "plotdata/20.txt"
-plot "plotdata/21.txt"
-plot "plotdata/22.txt"
-plot "plotdata/23.txt"
-plot "plotdata/24.txt"
-plot "plotdata/25.txt"
-plot "plotdata/26.txt"
-plot "plotdata/27.txt"
-plot "plotdata/28.txt"
-plot "plotdata/29.txt"
-plot "plotdata/30.txt"
-plot "plotdata/31.txt"
-plot "plotdata/32.txt"
-plot "plotdata/33.txt"
-plot "plotdata/34.txt"
-plot "plotdata/35.txt"
-plot "plotdata/36.txt"
-plot "plotdata/37.txt"
-plot "plotdata/38.txt"
-plot "plotdata/39.txt"
-plot "plotdata/40.txt"
-plot "plotdata/41.txt"
-plot "plotdata/42.txt"
-plot "plotdata/43.txt"
-plot "plotdata/44.txt"
-plot "plotdata/45.txt"
-plot "plotdata/46.txt"
-plot "plotdata/47.txt"
-plot "plotdata/48.txt"
-plot "plotdata/49.txt"
-plot "plotdata/50.txt"
-plot "plotdata/51.txt"
-plot "plotdata/52.txt"
-plot "plotdata/53.txt"
-plot "plotdata/54.txt"
-plot "plotdata/55.txt"
-plot "plotdata/56.txt"
-plot "plotdata/57.txt"
-plot "plotdata/58.txt"
-plot "plotdata/59.txt"
-plot "plotdata/60.txt"
-plot "plotdata/61.txt"
-plot "plotdata/62.txt"
-plot "plotdata/63.txt"
-plot "plotdata/64.txt"
-plot "plotdata/65.txt"
-plot "plotdata/66.txt"
-plot "plotdata/67.txt"
-plot "plotdata/68.txt"
-plot "plotdata/69.txt"
-plot "plotdata/70.txt"
-plot "plotdata/71.txt"
-plot "plotdata/72.txt"
-plot "plotdata/73.txt"
-plot "plotdata/74.txt"
-plot "plotdata/75.txt"
-plot "plotdata/76.txt"
-plot "plotdata/77.txt"
-plot "plotdata/78.txt"
-plot "plotdata/79.txt"
-plot "plotdata/80.txt"
-plot "plotdata/81.txt"
-plot "plotdata/82.txt"
-plot "plotdata/83.txt"
-plot "plotdata/84.txt"
-plot "plotdata/85.txt"
-plot "plotdata/86.txt"
-plot "plotdata/87.txt"
-plot "plotdata/88.txt"
-plot "plotdata/89.txt"
-plot "plotdata/90.txt"
-plot "plotdata/91.txt"
-plot "plotdata/92.txt"
-plot "plotdata/93.txt"
-plot "plotdata/94.txt"
-plot "plotdata/95.txt"
-plot "plotdata/96.txt"
-plot "plotdata/97.txt"
-plot "plotdata/98.txt"
-plot "plotdata/99.txt"
-plot "plotdata/100.txt"
-plot "plotdata/101.txt"
-plot "plotdata/102.txt"
-plot "plotdata/103.txt"
-plot "plotdata/104.txt"
-plot "plotdata/105.txt"
-plot "plotdata/106.txt"
-plot "plotdata/107.txt"
-plot "plotdata/108.txt"
-plot "plotdata/109.txt"
-plot "plotdata/110.txt"
-plot "plotdata/111.txt"
-plot "plotdata/112.txt"
-plot "plotdata/113.txt"
-plot "plotdata/114.txt"
-plot "plotdata/115.txt"
-plot "plotdata/116.txt"
-plot "plotdata/117.txt"
-plot "plotdata/118.txt"
-plot "plotdata/119.txt"
-plot "plotdata/120.txt"
-plot "plotdata/121.txt"
-plot "plotdata/122.txt"
-plot "plotdata/123.txt"
-plot "plotdata/124.txt"
-plot "plotdata/125.txt"
-plot "plotdata/126.txt"
-plot "plotdata/127.txt"
-plot "plotdata/128.txt"
-plot "plotdata/129.txt"
-plot "plotdata/130.txt"
-plot "plotdata/131.txt"
-plot "plotdata/132.txt"
-plot "plotdata/133.txt"
-plot "plotdata/134.txt"
-plot "plotdata/135.txt"
-plot "plotdata/136.txt"
-plot "plotdata/137.txt"
-plot "plotdata/138.txt"
-plot "plotdata/139.txt"
-plot "plotdata/140.txt"
-plot "plotdata/141.txt"
-plot "plotdata/142.txt"
-plot "plotdata/143.txt"
-plot "plotdata/144.txt"
-plot "plotdata/145.txt"
-plot "plotdata/146.txt"
-plot "plotdata/147.txt"
-plot "plotdata/148.txt"
-plot "plotdata/149.txt"
-plot "plotdata/150.txt"
-plot "plotdata/151.txt"
-plot "plotdata/152.txt"
-plot "plotdata/153.txt"
-plot "plotdata/154.txt"
-plot "plotdata/155.txt"
-plot "plotdata/156.txt"
-plot "plotdata/157.txt"
-plot "plotdata/158.txt"
-plot "plotdata/159.txt"
-plot "plotdata/160.txt"
-plot "plotdata/161.txt"
-plot "plotdata/162.txt"
-plot "plotdata/163.txt"
-plot "plotdata/164.txt"
-plot "plotdata/165.txt"
-plot "plotdata/166.txt"
-plot "plotdata/167.txt"
-plot "plotdata/168.txt"
-plot "plotdata/169.txt"
-plot "plotdata/170.txt"
-plot "plotdata/171.txt"
-plot "plotdata/172.txt"
-plot "plotdata/173.txt"
-plot "plotdata/174.txt"
-plot "plotdata/175.txt"
-plot "plotdata/176.txt"
-plot "plotdata/177.txt"
-plot "plotdata/178.txt"
-plot "plotdata/179.txt"
-plot "plotdata/180.txt"
-plot "plotdata/181.txt"
-plot "plotdata/182.txt"
-plot "plotdata/183.txt"
-plot "plotdata/184.txt"
-plot "plotdata/185.txt"
-plot "plotdata/186.txt"
-plot "plotdata/187.txt"
-plot "plotdata/188.txt"
-plot "plotdata/189.txt"
-plot "plotdata/190.txt"
-plot "plotdata/191.txt"
-plot "plotdata/192.txt"
-plot "plotdata/193.txt"
-plot "plotdata/194.txt"
-plot "plotdata/195.txt"
-plot "plotdata/196.txt"
-plot "plotdata/197.txt"
-plot "plotdata/198.txt"
-plot "plotdata/199.txt"
-plot "plotdata/200.txt"
-plot "plotdata/201.txt"
-plot "plotdata/202.txt"
-plot "plotdata/203.txt"
-plot "plotdata/204.txt"
-plot "plotdata/205.txt"
-plot "plotdata/206.txt"
-plot "plotdata/207.txt"
-plot "plotdata/208.txt"
-plot "plotdata/209.txt"
-plot "plotdata/210.txt"
-plot "plotdata/211.txt"
-plot "plotdata/212.txt"
-plot "plotdata/213.txt"
-plot "plotdata/214.txt"
-plot "plotdata/215.txt"
-plot "plotdata/216.txt"
-plot "plotdata/217.txt"
-plot "plotdata/218.txt"
-plot "plotdata/219.txt"
-plot "plotdata/220.txt"
-plot "plotdata/221.txt"
-plot "plotdata/222.txt"
-plot "plotdata/223.txt"
-plot "plotdata/224.txt"
-plot "plotdata/225.txt"
-plot "plotdata/226.txt"
-plot "plotdata/227.txt"
-plot "plotdata/228.txt"
-plot "plotdata/229.txt"
-plot "plotdata/230.txt"
-plot "plotdata/231.txt"
-plot "plotdata/232.txt"
-plot "plotdata/233.txt"
-plot "plotdata/234.txt"
-plot "plotdata/235.txt"
-plot "plotdata/236.txt"
-plot "plotdata/237.txt"
-plot "plotdata/238.txt"
-plot "plotdata/239.txt"
-plot "plotdata/240.txt"
-plot "plotdata/241.txt"
-plot "plotdata/242.txt"
-plot "plotdata/243.txt"
-plot "plotdata/244.txt"
-plot "plotdata/245.txt"
-plot "plotdata/246.txt"
-plot "plotdata/247.txt"
-plot "plotdata/248.txt"
-plot "plotdata/249.txt"
-plot "plotdata/250.txt"
-plot "plotdata/251.txt"
-plot "plotdata/252.txt"
-plot "plotdata/253.txt"
-plot "plotdata/254.txt"
-plot "plotdata/255.txt"
-plot "plotdata/256.txt"
-plot "plotdata/257.txt"
-plot "plotdata/258.txt"
-plot "plotdata/259.txt"
-plot "plotdata/260.txt"
-plot "plotdata/261.txt"
-plot "plotdata/262.txt"
-plot "plotdata/263.txt"
-plot "plotdata/264.txt"
-plot "plotdata/265.txt"
-plot "plotdata/266.txt"
-plot "plotdata/267.txt"
-plot "plotdata/268.txt"
-plot "plotdata/269.txt"
-plot "plotdata/270.txt"
-plot "plotdata/271.txt"
-plot "plotdata/272.txt"
-plot "plotdata/273.txt"
-plot "plotdata/274.txt"
-plot "plotdata/275.txt"
-plot "plotdata/276.txt"
-plot "plotdata/277.txt"
-plot "plotdata/278.txt"
-plot "plotdata/279.txt"
-plot "plotdata/280.txt"
-plot "plotdata/281.txt"
-plot "plotdata/282.txt"
-plot "plotdata/283.txt"
-plot "plotdata/284.txt"
-plot "plotdata/285.txt"
-plot "plotdata/286.txt"
-plot "plotdata/287.txt"
-plot "plotdata/288.txt"
-plot "plotdata/289.txt"
-plot "plotdata/290.txt"
-plot "plotdata/291.txt"
-plot "plotdata/292.txt"
-plot "plotdata/293.txt"
-plot "plotdata/294.txt"
-plot "plotdata/295.txt"
-plot "plotdata/296.txt"
-plot "plotdata/297.txt"
-plot "plotdata/298.txt"
-plot "plotdata/299.txt"
-plot "plotdata/300.txt"
-plot "plotdata/301.txt"
-plot "plotdata/302.txt"
-plot "plotdata/303.txt"
-plot "plotdata/304.txt"
-plot "plotdata/305.txt"
-plot "plotdata/306.txt"
-plot "plotdata/307.txt"
-plot "plotdata/308.txt"
-plot "plotdata/309.txt"
-plot "plotdata/310.txt"
-plot "plotdata/311.txt"
-plot "plotdata/312.txt"
-plot "plotdata/313.txt"
-plot "plotdata/314.txt"
-plot "plotdata/315.txt"
-plot "plotdata/316.txt"
-plot "plotdata/317.txt"
-plot "plotdata/318.txt"
-plot "plotdata/319.txt"
-plot "plotdata/320.txt"
-plot "plotdata/321.txt"
-plot "plotdata/322.txt"
-plot "plotdata/323.txt"
-plot "plotdata/324.txt"
-plot "plotdata/325.txt"
-plot "plotdata/326.txt"
-plot "plotdata/327.txt"
-plot "plotdata/328.txt"
-plot "plotdata/329.txt"
-plot "plotdata/330.txt"
-plot "plotdata/331.txt"
-plot "plotdata/332.txt"
-plot "plotdata/333.txt"
-plot "plotdata/334.txt"
-plot "plotdata/335.txt"
-plot "plotdata/336.txt"
-plot "plotdata/337.txt"
-plot "plotdata/338.txt"
-plot "plotdata/339.txt"
-plot "plotdata/340.txt"
-plot "plotdata/341.txt"
-plot "plotdata/342.txt"
-plot "plotdata/343.txt"
-plot "plotdata/344.txt"
-plot "plotdata/345.txt"
-plot "plotdata/346.txt"
-plot "plotdata/347.txt"
-plot "plotdata/348.txt"
-plot "plotdata/349.txt"
-plot "plotdata/350.txt"
-plot "plotdata/351.txt"
-plot "plotdata/352.txt"
-plot "plotdata/353.txt"
-plot "plotdata/354.txt"
-plot "plotdata/355.txt"
-plot "plotdata/356.txt"
-plot "plotdata/357.txt"
-plot "plotdata/358.txt"
-plot "plotdata/359.txt"
-plot "plotdata/360.txt"
-plot "plotdata/361.txt"
-plot "plotdata/362.txt"
-plot "plotdata/363.txt"
-plot "plotdata/364.txt"
-plot "plotdata/365.txt"
-plot "plotdata/366.txt"
-plot "plotdata/367.txt"
-plot "plotdata/368.txt"
-plot "plotdata/369.txt"
-plot "plotdata/370.txt"
-plot "plotdata/371.txt"
-plot "plotdata/372.txt"
-plot "plotdata/373.txt"
-plot "plotdata/374.txt"
-plot "plotdata/375.txt"
-plot "plotdata/376.txt"
-plot "plotdata/377.txt"
-plot "plotdata/378.txt"
-plot "plotdata/379.txt"
-plot "plotdata/380.txt"
-plot "plotdata/381.txt"
-plot "plotdata/382.txt"
-plot "plotdata/383.txt"
-plot "plotdata/384.txt"
-plot "plotdata/385.txt"
-plot "plotdata/386.txt"
-plot "plotdata/387.txt"
-plot "plotdata/388.txt"
-plot "plotdata/389.txt"
-plot "plotdata/390.txt"
-plot "plotdata/391.txt"
-plot "plotdata/392.txt"
-plot "plotdata/393.txt"
-plot "plotdata/394.txt"
-plot "plotdata/395.txt"
-plot "plotdata/396.txt"
-plot "plotdata/397.txt"
-plot "plotdata/398.txt"
-plot "plotdata/399.txt"
-plot "plotdata/400.txt"
-plot "plotdata/401.txt"
-plot "plotdata/402.txt"
-plot "plotdata/403.txt"
-plot "plotdata/404.txt"
-plot "plotdata/405.txt"
-plot "plotdata/406.txt"
-plot "plotdata/407.txt"
-plot "plotdata/408.txt"
-plot "plotdata/409.txt"
-plot "plotdata/410.txt"
-plot "plotdata/411.txt"
-plot "plotdata/412.txt"
-plot "plotdata/413.txt"
-plot "plotdata/414.txt"
-plot "plotdata/415.txt"
-plot "plotdata/416.txt"
-plot "plotdata/417.txt"
-plot "plotdata/418.txt"
-plot "plotdata/419.txt"
-plot "plotdata/420.txt"
-plot "plotdata/421.txt"
-plot "plotdata/422.txt"
-plot "plotdata/423.txt"
-plot "plotdata/424.txt"
-plot "plotdata/425.txt"
-plot "plotdata/426.txt"
-plot "plotdata/427.txt"
-plot "plotdata/428.txt"
-plot "plotdata/429.txt"
-plot "plotdata/430.txt"
-plot "plotdata/431.txt"
-plot "plotdata/432.txt"
-plot "plotdata/433.txt"
-plot "plotdata/434.txt"
-plot "plotdata/435.txt"
-plot "plotdata/436.txt"
-plot "plotdata/437.txt"
-plot "plotdata/438.txt"
-plot "plotdata/439.txt"
-plot "plotdata/440.txt"
-plot "plotdata/441.txt"
-plot "plotdata/442.txt"
-plot "plotdata/443.txt"
-plot "plotdata/444.txt"
-plot "plotdata/445.txt"
-plot "plotdata/446.txt"
-plot "plotdata/447.txt"
-plot "plotdata/448.txt"
-plot "plotdata/449.txt"
-plot "plotdata/450.txt"
-plot "plotdata/451.txt"
-plot "plotdata/452.txt"
-plot "plotdata/453.txt"
-plot "plotdata/454.txt"
-plot "plotdata/455.txt"
-plot "plotdata/456.txt"
-plot "plotdata/457.txt"
-plot "plotdata/458.txt"
-plot "plotdata/459.txt"
-plot "plotdata/460.txt"
-plot "plotdata/461.txt"
-plot "plotdata/462.txt"
-plot "plotdata/463.txt"
-plot "plotdata/464.txt"
-plot "plotdata/465.txt"
-plot "plotdata/466.txt"
-plot "plotdata/467.txt"
-plot "plotdata/468.txt"
-plot "plotdata/469.txt"
-plot "plotdata/470.txt"
-plot "plotdata/471.txt"
-plot "plotdata/472.txt"
-plot "plotdata/473.txt"
-plot "plotdata/474.txt"
-plot "plotdata/475.txt"
-plot "plotdata/476.txt"
-plot "plotdata/477.txt"
-plot "plotdata/478.txt"
-plot "plotdata/479.txt"
-plot "plotdata/480.txt"
-plot "plotdata/481.txt"
-plot "plotdata/482.txt"
-plot "plotdata/483.txt"
-plot "plotdata/484.txt"
-plot "plotdata/485.txt"
-plot "plotdata/486.txt"
-plot "plotdata/487.txt"
-plot "plotdata/488.txt"
-plot "plotdata/489.txt"
-plot "plotdata/490.txt"
-plot "plotdata/491.txt"
-plot "plotdata/492.txt"
-plot "plotdata/493.txt"
-plot "plotdata/494.txt"
-plot "plotdata/495.txt"
-plot "plotdata/496.txt"
-plot "plotdata/497.txt"
-plot "plotdata/498.txt"
-plot "plotdata/499.txt"
-plot "plotdata/500.txt"
-plot "plotdata/501.txt"
-plot "plotdata/502.txt"
-plot "plotdata/503.txt"
-plot "plotdata/504.txt"
-plot "plotdata/505.txt"
-plot "plotdata/506.txt"
-plot "plotdata/507.txt"
-plot "plotdata/508.txt"
-plot "plotdata/509.txt"
-plot "plotdata/510.txt"
-plot "plotdata/511.txt"
-plot "plotdata/512.txt"
-plot "plotdata/513.txt"
-plot "plotdata/514.txt"
-plot "plotdata/515.txt"
-plot "plotdata/516.txt"
-plot "plotdata/517.txt"
-plot "plotdata/518.txt"
-plot "plotdata/519.txt"
-plot "plotdata/520.txt"
-plot "plotdata/521.txt"
-plot "plotdata/522.txt"
-plot "plotdata/523.txt"
-plot "plotdata/524.txt"
-plot "plotdata/525.txt"
-plot "plotdata/526.txt"
-plot "plotdata/527.txt"
-plot "plotdata/528.txt"
-plot "plotdata/529.txt"
-plot "plotdata/530.txt"
-plot "plotdata/531.txt"
-plot "plotdata/532.txt"
-plot "plotdata/533.txt"
-plot "plotdata/534.txt"
-plot "plotdata/535.txt"
-plot "plotdata/536.txt"
-plot "plotdata/537.txt"
-plot "plotdata/538.txt"
-plot "plotdata/539.txt"
-plot "plotdata/540.txt"
-plot "plotdata/541.txt"
-plot "plotdata/542.txt"
-plot "plotdata/543.txt"
-plot "plotdata/544.txt"
-plot "plotdata/545.txt"
-plot "plotdata/546.txt"
-plot "plotdata/547.txt"
-plot "plotdata/548.txt"
-plot "plotdata/549.txt"
-plot "plotdata/550.txt"
-plot "plotdata/551.txt"
-plot "plotdata/552.txt"
-plot "plotdata/553.txt"
-plot "plotdata/554.txt"
-plot "plotdata/555.txt"
-plot "plotdata/556.txt"
-plot "plotdata/557.txt"
-plot "plotdata/558.txt"
-plot "plotdata/559.txt"
-plot "plotdata/560.txt"
-plot "plotdata/561.txt"
-plot "plotdata/562.txt"
-plot "plotdata/563.txt"
-plot "plotdata/564.txt"
-plot "plotdata/565.txt"
-plot "plotdata/566.txt"
-plot "plotdata/567.txt"
-plot "plotdata/568.txt"
-plot "plotdata/569.txt"
-plot "plotdata/570.txt"
-plot "plotdata/571.txt"
-plot "plotdata/572.txt"
-plot "plotdata/573.txt"
-plot "plotdata/574.txt"
-plot "plotdata/575.txt"
-plot "plotdata/576.txt"
-plot "plotdata/577.txt"
-plot "plotdata/578.txt"
-plot "plotdata/579.txt"
-plot "plotdata/580.txt"
-plot "plotdata/581.txt"
-plot "plotdata/582.txt"
-plot "plotdata/583.txt"
-plot "plotdata/584.txt"
-plot "plotdata/585.txt"
-plot "plotdata/586.txt"
-plot "plotdata/587.txt"
-plot "plotdata/588.txt"
-plot "plotdata/589.txt"
-plot "plotdata/590.txt"
-plot "plotdata/591.txt"
-plot "plotdata/592.txt"
-plot "plotdata/593.txt"
-plot "plotdata/594.txt"
-plot "plotdata/595.txt"
-plot "plotdata/596.txt"
-plot "plotdata/597.txt"
-plot "plotdata/598.txt"
-plot "plotdata/599.txt"
-plot "plotdata/600.txt"
-plot "plotdata/601.txt"
-plot "plotdata/602.txt"
-plot "plotdata/603.txt"
-plot "plotdata/604.txt"
-plot "plotdata/605.txt"
-plot "plotdata/606.txt"
-plot "plotdata/607.txt"
-plot "plotdata/608.txt"
-plot "plotdata/609.txt"
-plot "plotdata/610.txt"
-plot "plotdata/611.txt"
-plot "plotdata/612.txt"
-plot "plotdata/613.txt"
-plot "plotdata/614.txt"
-plot "plotdata/615.txt"
-plot "plotdata/616.txt"
-plot "plotdata/617.txt"
-plot "plotdata/618.txt"
-plot "plotdata/619.txt"
-plot "plotdata/620.txt"
-plot "plotdata/621.txt"
-plot "plotdata/622.txt"
-plot "plotdata/623.txt"
-plot "plotdata/624.txt"
-plot "plotdata/625.txt"
-plot "plotdata/626.txt"
-plot "plotdata/627.txt"
-plot "plotdata/628.txt"
-plot "plotdata/629.txt"
-plot "plotdata/630.txt"
-plot "plotdata/631.txt"
-plot "plotdata/632.txt"
-plot "plotdata/633.txt"
-plot "plotdata/634.txt"
-plot "plotdata/635.txt"
-plot "plotdata/636.txt"
-plot "plotdata/637.txt"
-plot "plotdata/638.txt"
-plot "plotdata/639.txt"
-plot "plotdata/640.txt"
-plot "plotdata/641.txt"
-plot "plotdata/642.txt"
-plot "plotdata/643.txt"
-plot "plotdata/644.txt"
-plot "plotdata/645.txt"
-plot "plotdata/646.txt"
-plot "plotdata/647.txt"
-plot "plotdata/648.txt"
-plot "plotdata/649.txt"
-plot "plotdata/650.txt"
-plot "plotdata/651.txt"
-plot "plotdata/652.txt"
-plot "plotdata/653.txt"
-plot "plotdata/654.txt"
-plot "plotdata/655.txt"
-plot "plotdata/656.txt"
-plot "plotdata/657.txt"
-plot "plotdata/658.txt"
-plot "plotdata/659.txt"
-plot "plotdata/660.txt"
-plot "plotdata/661.txt"
-plot "plotdata/662.txt"
-plot "plotdata/663.txt"
-plot "plotdata/664.txt"
-plot "plotdata/665.txt"
-plot "plotdata/666.txt"
-plot "plotdata/667.txt"
-plot "plotdata/668.txt"
-plot "plotdata/669.txt"
-plot "plotdata/670.txt"
-plot "plotdata/671.txt"
-plot "plotdata/672.txt"
-plot "plotdata/673.txt"
-plot "plotdata/674.txt"
-plot "plotdata/675.txt"
-plot "plotdata/676.txt"
-plot "plotdata/677.txt"
-plot "plotdata/678.txt"
-plot "plotdata/679.txt"
-plot "plotdata/680.txt"
-plot "plotdata/681.txt"
-plot "plotdata/682.txt"
-plot "plotdata/683.txt"
-plot "plotdata/684.txt"
-plot "plotdata/685.txt"
-plot "plotdata/686.txt"
-plot "plotdata/687.txt"
-plot "plotdata/688.txt"
-plot "plotdata/689.txt"
-plot "plotdata/690.txt"
-plot "plotdata/691.txt"
-plot "plotdata/692.txt"
-plot "plotdata/693.txt"
-plot "plotdata/694.txt"
-plot "plotdata/695.txt"
-plot "plotdata/696.txt"
-plot "plotdata/697.txt"
-plot "plotdata/698.txt"
-plot "plotdata/699.txt"
-plot "plotdata/700.txt"
-plot "plotdata/701.txt"
-plot "plotdata/702.txt"
-plot "plotdata/703.txt"
-plot "plotdata/704.txt"
-plot "plotdata/705.txt"
-plot "plotdata/706.txt"
-plot "plotdata/707.txt"
-plot "plotdata/708.txt"
-plot "plotdata/709.txt"
-plot "plotdata/710.txt"
-plot "plotdata/711.txt"
-plot "plotdata/712.txt"
-plot "plotdata/713.txt"
-plot "plotdata/714.txt"
-plot "plotdata/715.txt"
-plot "plotdata/716.txt"
-plot "plotdata/717.txt"
-plot "plotdata/718.txt"
-plot "plotdata/719.txt"
-plot "plotdata/720.txt"
-plot "plotdata/721.txt"
-plot "plotdata/722.txt"
-plot "plotdata/723.txt"
-plot "plotdata/724.txt"
-plot "plotdata/725.txt"
-plot "plotdata/726.txt"
-plot "plotdata/727.txt"
-plot "plotdata/728.txt"
-plot "plotdata/729.txt"
-plot "plotdata/730.txt"
-plot "plotdata/731.txt"
-plot "plotdata/732.txt"
-plot "plotdata/733.txt"
-plot "plotdata/734.txt"
-plot "plotdata/735.txt"
-plot "plotdata/736.txt"
-plot "plotdata/737.txt"
-plot "plotdata/738.txt"
-plot "plotdata/739.txt"
-plot "plotdata/740.txt"
-plot "plotdata/741.txt"
-plot "plotdata/742.txt"
-plot "plotdata/743.txt"
-plot "plotdata/744.txt"
-plot "plotdata/745.txt"
-plot "plotdata/746.txt"
-plot "plotdata/747.txt"
-plot "plotdata/748.txt"
-plot "plotdata/749.txt"
-plot "plotdata/750.txt"
-plot "plotdata/751.txt"
-plot "plotdata/752.txt"
-plot "plotdata/753.txt"
-plot "plotdata/754.txt"
-plot "plotdata/755.txt"
-plot "plotdata/756.txt"
-plot "plotdata/757.txt"
-plot "plotdata/758.txt"
-plot "plotdata/759.txt"
-plot "plotdata/760.txt"
-plot "plotdata/761.txt"
-plot "plotdata/762.txt"
-plot "plotdata/763.txt"
-plot "plotdata/764.txt"
-plot "plotdata/765.txt"
-plot "plotdata/766.txt"
-plot "plotdata/767.txt"
-plot "plotdata/768.txt"
-plot "plotdata/769.txt"
-plot "plotdata/770.txt"
-plot "plotdata/771.txt"
-plot "plotdata/772.txt"
-plot "plotdata/773.txt"
-plot "plotdata/774.txt"
-plot "plotdata/775.txt"
-plot "plotdata/776.txt"
-plot "plotdata/777.txt"
-plot "plotdata/778.txt"
-plot "plotdata/779.txt"
-plot "plotdata/780.txt"
-plot "plotdata/781.txt"
-plot "plotdata/782.txt"
-plot "plotdata/783.txt"
-plot "plotdata/784.txt"
-plot "plotdata/785.txt"
-plot "plotdata/786.txt"
-plot "plotdata/787.txt"
-plot "plotdata/788.txt"
-plot "plotdata/789.txt"
-plot "plotdata/790.txt"
-plot "plotdata/791.txt"
-plot "plotdata/792.txt"
-plot "plotdata/793.txt"
-plot "plotdata/794.txt"
-plot "plotdata/795.txt"
-plot "plotdata/796.txt"
-plot "plotdata/797.txt"
-plot "plotdata/798.txt"
-plot "plotdata/799.txt"
-plot "plotdata/800.txt"
-plot "plotdata/801.txt"
-plot "plotdata/802.txt"
-plot "plotdata/803.txt"
-plot "plotdata/804.txt"
-plot "plotdata/805.txt"
-plot "plotdata/806.txt"
-plot "plotdata/807.txt"
-plot "plotdata/808.txt"
-plot "plotdata/809.txt"
-plot "plotdata/810.txt"
-plot "plotdata/811.txt"
-plot "plotdata/812.txt"
-plot "plotdata/813.txt"
-plot "plotdata/814.txt"
-plot "plotdata/815.txt"
-plot "plotdata/816.txt"
-plot "plotdata/817.txt"
-plot "plotdata/818.txt"
-plot "plotdata/819.txt"
-plot "plotdata/820.txt"
-plot "plotdata/821.txt"
-plot "plotdata/822.txt"
-plot "plotdata/823.txt"
-plot "plotdata/824.txt"
-plot "plotdata/825.txt"
-plot "plotdata/826.txt"
-plot "plotdata/827.txt"
-plot "plotdata/828.txt"
-plot "plotdata/829.txt"
-plot "plotdata/830.txt"
-plot "plotdata/831.txt"
-plot "plotdata/832.txt"
-plot "plotdata/833.txt"
-plot "plotdata/834.txt"
-plot "plotdata/835.txt"
-plot "plotdata/836.txt"
-plot "plotdata/837.txt"
-plot "plotdata/838.txt"
-plot "plotdata/839.txt"
-plot "plotdata/840.txt"
-plot "plotdata/841.txt"
-plot "plotdata/842.txt"
-plot "plotdata/843.txt"
-plot "plotdata/844.txt"
-plot "plotdata/845.txt"
-plot "plotdata/846.txt"
-plot "plotdata/847.txt"
-plot "plotdata/848.txt"
-plot "plotdata/849.txt"
-plot "plotdata/850.txt"
-plot "plotdata/851.txt"
-plot "plotdata/852.txt"
-plot "plotdata/853.txt"
-plot "plotdata/854.txt"
-plot "plotdata/855.txt"
-plot "plotdata/856.txt"
-plot "plotdata/857.txt"
-plot "plotdata/858.txt"
-plot "plotdata/859.txt"
-plot "plotdata/860.txt"
-plot "plotdata/861.txt"
-plot "plotdata/862.txt"
-plot "plotdata/863.txt"
-plot "plotdata/864.txt"
-plot "plotdata/865.txt"
-plot "plotdata/866.txt"
-plot "plotdata/867.txt"
-plot "plotdata/868.txt"
-plot "plotdata/869.txt"
-plot "plotdata/870.txt"
-plot "plotdata/871.txt"
-plot "plotdata/872.txt"
-plot "plotdata/873.txt"
-plot "plotdata/874.txt"
-plot "plotdata/875.txt"
-plot "plotdata/876.txt"
-plot "plotdata/877.txt"
-plot "plotdata/878.txt"
-plot "plotdata/879.txt"
-plot "plotdata/880.txt"
-plot "plotdata/881.txt"
-plot "plotdata/882.txt"
-plot "plotdata/883.txt"
-plot "plotdata/884.txt"
-plot "plotdata/885.txt"
-plot "plotdata/886.txt"
-plot "plotdata/887.txt"
-plot "plotdata/888.txt"
-plot "plotdata/889.txt"
-plot "plotdata/890.txt"
-plot "plotdata/891.txt"
-plot "plotdata/892.txt"
-plot "plotdata/893.txt"
-plot "plotdata/894.txt"
-plot "plotdata/895.txt"
-plot "plotdata/896.txt"
-plot "plotdata/897.txt"
-plot "plotdata/898.txt"
-plot "plotdata/899.txt"
-plot "plotdata/900.txt"
-plot "plotdata/901.txt"
-plot "plotdata/902.txt"
-plot "plotdata/903.txt"
-plot "plotdata/904.txt"
-plot "plotdata/905.txt"
-plot "plotdata/906.txt"
-plot "plotdata/907.txt"
-plot "plotdata/908.txt"
-plot "plotdata/909.txt"
-plot "plotdata/910.txt"
-plot "plotdata/911.txt"
-plot "plotdata/912.txt"
-plot "plotdata/913.txt"
-plot "plotdata/914.txt"
-plot "plotdata/915.txt"
-plot "plotdata/916.txt"
-plot "plotdata/917.txt"
-plot "plotdata/918.txt"
-plot "plotdata/919.txt"
-plot "plotdata/920.txt"
-plot "plotdata/921.txt"
-plot "plotdata/922.txt"
-plot "plotdata/923.txt"
-plot "plotdata/924.txt"
-plot "plotdata/925.txt"
-plot "plotdata/926.txt"
-plot "plotdata/927.txt"
-plot "plotdata/928.txt"
-plot "plotdata/929.txt"
-plot "plotdata/930.txt"
-plot "plotdata/931.txt"
-plot "plotdata/932.txt"
-plot "plotdata/933.txt"
-plot "plotdata/934.txt"
-plot "plotdata/935.txt"
-plot "plotdata/936.txt"
-plot "plotdata/937.txt"
-plot "plotdata/938.txt"
-plot "plotdata/939.txt"
-plot "plotdata/940.txt"
-plot "plotdata/941.txt"
-plot "plotdata/942.txt"
-plot "plotdata/943.txt"
-plot "plotdata/944.txt"
-plot "plotdata/945.txt"
-plot "plotdata/946.txt"
-plot "plotdata/947.txt"
-plot "plotdata/948.txt"
-plot "plotdata/949.txt"
-plot "plotdata/950.txt"
-plot "plotdata/951.txt"
-plot "plotdata/952.txt"
-plot "plotdata/953.txt"
-plot "plotdata/954.txt"
-plot "plotdata/955.txt"
-plot "plotdata/956.txt"
-plot "plotdata/957.txt"
-plot "plotdata/958.txt"
-plot "plotdata/959.txt"
-plot "plotdata/960.txt"
-plot "plotdata/961.txt"
-plot "plotdata/962.txt"
-plot "plotdata/963.txt"
-plot "plotdata/964.txt"
-plot "plotdata/965.txt"
-plot "plotdata/966.txt"
-plot "plotdata/967.txt"
-plot "plotdata/968.txt"
-plot "plotdata/969.txt"
-plot "plotdata/970.txt"
-plot "plotdata/971.txt"
-plot "plotdata/972.txt"
-plot "plotdata/973.txt"
-plot "plotdata/974.txt"
-plot "plotdata/975.txt"
-plot "plotdata/976.txt"
-plot "plotdata/977.txt"
-plot "plotdata/978.txt"
-plot "plotdata/979.txt"
-plot "plotdata/980.txt"
-plot "plotdata/981.txt"
-plot "plotdata/982.txt"
-plot "plotdata/983.txt"
-plot "plotdata/984.txt"
-plot "plotdata/985.txt"
-plot "plotdata/986.txt"
-plot "plotdata/987.txt"
-plot "plotdata/988.txt"
-plot "plotdata/989.txt"
-plot "plotdata/990.txt"
-plot "plotdata/991.txt"
-plot "plotdata/992.txt"
-plot "plotdata/993.txt"
-plot "plotdata/994.txt"
-plot "plotdata/995.txt"
-plot "plotdata/996.txt"
-plot "plotdata/997.txt"
-plot "plotdata/998.txt"
-plot "plotdata/999.txt"
-plot "plotdata/1000.txt"
-plot "plotdata/1001.txt"
-plot "plotdata/1002.txt"
-plot "plotdata/1003.txt"
-plot "plotdata/1004.txt"
-plot "plotdata/1005.txt"
-plot "plotdata/1006.txt"
-plot "plotdata/1007.txt"
-plot "plotdata/1008.txt"
-plot "plotdata/1009.txt"
-plot "plotdata/1010.txt"
-plot "plotdata/1011.txt"
-plot "plotdata/1012.txt"
-plot "plotdata/1013.txt"
-plot "plotdata/1014.txt"
-plot "plotdata/1015.txt"
-plot "plotdata/1016.txt"
-plot "plotdata/1017.txt"
-plot "plotdata/1018.txt"
-plot "plotdata/1019.txt"
-plot "plotdata/1020.txt"
-plot "plotdata/1021.txt"
-plot "plotdata/1022.txt"
-plot "plotdata/1023.txt"
+set xrange [0:150]
+set yrange [0:150]
+plot "plotdata/0.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/1.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/2.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/3.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/4.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/5.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/6.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/7.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/8.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/9.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/10.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/11.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/12.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/13.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/14.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/15.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/16.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/17.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/18.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/19.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/20.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/21.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/22.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/23.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/24.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/25.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/26.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/27.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/28.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/29.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/30.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/31.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/32.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/33.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/34.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/35.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/36.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/37.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/38.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/39.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/40.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/41.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/42.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/43.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/44.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/45.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/46.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/47.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/48.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/49.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/50.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/51.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/52.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/53.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/54.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/55.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/56.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/57.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/58.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/59.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/60.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/61.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/62.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/63.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/64.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/65.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/66.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/67.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/68.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/69.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/70.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/71.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/72.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/73.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/74.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/75.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/76.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/77.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/78.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/79.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/80.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/81.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/82.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/83.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/84.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/85.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/86.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/87.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/88.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/89.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/90.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/91.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/92.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/93.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/94.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/95.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/96.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/97.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/98.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/99.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/100.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/101.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/102.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/103.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/104.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/105.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/106.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/107.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/108.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/109.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/110.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/111.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/112.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/113.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/114.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/115.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/116.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/117.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/118.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/119.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/120.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/121.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/122.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/123.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/124.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/125.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/126.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/127.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/128.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/129.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/130.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/131.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/132.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/133.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/134.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/135.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/136.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/137.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/138.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/139.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/140.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/141.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/142.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/143.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/144.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/145.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/146.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/147.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/148.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/149.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/150.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/151.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/152.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/153.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/154.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/155.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/156.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/157.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/158.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/159.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/160.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/161.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/162.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/163.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/164.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/165.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/166.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/167.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/168.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/169.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/170.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/171.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/172.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/173.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/174.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/175.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/176.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/177.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/178.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/179.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/180.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/181.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/182.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/183.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/184.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/185.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/186.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/187.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/188.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/189.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/190.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/191.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/192.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/193.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/194.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/195.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/196.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/197.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/198.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/199.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/200.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/201.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/202.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/203.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/204.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/205.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/206.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/207.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/208.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/209.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/210.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/211.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/212.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/213.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/214.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/215.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/216.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/217.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/218.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/219.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/220.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/221.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/222.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/223.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/224.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/225.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/226.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/227.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/228.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/229.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/230.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/231.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/232.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/233.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/234.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/235.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/236.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/237.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/238.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/239.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/240.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/241.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/242.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/243.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/244.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/245.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/246.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/247.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/248.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/249.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/250.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/251.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/252.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/253.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/254.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/255.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/256.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/257.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/258.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/259.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/260.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/261.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/262.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/263.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/264.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/265.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/266.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/267.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/268.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/269.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/270.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/271.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/272.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/273.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/274.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/275.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/276.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/277.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/278.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/279.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/280.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/281.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/282.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/283.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/284.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/285.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/286.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/287.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/288.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/289.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/290.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/291.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/292.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/293.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/294.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/295.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/296.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/297.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/298.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/299.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/300.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/301.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/302.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/303.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/304.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/305.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/306.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/307.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/308.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/309.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/310.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/311.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/312.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/313.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/314.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/315.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/316.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/317.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/318.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/319.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/320.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/321.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/322.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/323.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/324.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/325.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/326.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/327.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/328.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/329.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/330.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/331.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/332.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/333.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/334.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/335.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/336.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/337.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/338.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/339.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/340.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/341.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/342.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/343.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/344.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/345.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/346.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/347.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/348.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/349.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/350.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/351.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/352.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/353.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/354.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/355.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/356.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/357.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/358.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/359.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/360.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/361.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/362.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/363.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/364.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/365.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/366.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/367.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/368.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/369.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/370.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/371.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/372.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/373.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/374.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/375.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/376.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/377.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/378.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/379.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/380.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/381.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/382.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/383.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/384.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/385.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/386.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/387.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/388.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/389.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/390.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/391.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/392.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/393.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/394.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/395.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/396.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/397.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/398.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/399.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/400.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/401.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/402.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/403.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/404.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/405.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/406.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/407.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/408.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/409.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/410.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/411.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/412.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/413.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/414.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/415.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/416.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/417.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/418.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/419.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/420.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/421.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/422.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/423.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/424.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/425.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/426.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/427.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/428.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/429.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/430.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/431.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/432.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/433.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/434.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/435.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/436.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/437.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/438.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/439.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/440.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/441.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/442.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/443.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/444.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/445.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/446.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/447.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/448.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/449.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/450.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/451.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/452.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/453.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/454.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/455.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/456.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/457.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/458.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/459.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/460.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/461.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/462.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/463.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/464.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/465.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/466.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/467.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/468.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/469.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/470.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/471.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/472.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/473.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/474.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/475.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/476.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/477.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/478.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/479.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/480.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/481.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/482.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/483.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/484.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/485.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/486.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/487.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/488.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/489.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/490.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/491.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/492.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/493.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/494.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/495.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/496.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/497.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/498.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/499.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/500.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/501.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/502.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/503.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/504.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/505.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/506.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/507.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/508.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/509.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/510.txt",'cont.dat' w l lt -1 lw 0.5
+plot "plotdata/511.txt",'cont.dat' w l lt -1 lw 0.5
