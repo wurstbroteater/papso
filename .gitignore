@@ -1,6 +1,5 @@
 # gnuplot cache
-/plotdata/*
-/plot.gnuplot
+
 
 # Project Clojure stuff
 /target
