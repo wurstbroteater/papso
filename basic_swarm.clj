@@ -43,7 +43,8 @@
   (def position (take 2 (repeatedly #(rand size))))
   {:velocity (take 2 (repeatedly #(rand size)))
    :position position
-   :best position})
+   :best position
+   :neighbour_best position})
 
 (defn create_random_swarm
   "creates a random swarm"
@@ -55,26 +56,28 @@
   [position]
   (nth (nth landscape (int (last position) ) '(-100)) (int (first position)) -100 ))
 
-(def global_best '(-100 -100))
-(defn update_global_best
-  "trys to update the global best position"
-  [position]
-  (alter-var-root #'global_best (constantly (last (sort-by fitness [position global_best])))))
+(defn get_neighbours
+  [particle swarm range]
+  (filter (fn [element] (> range (vec_dist (:position element) (:position particle)))) swarm))
+
+(defn get_neighbour_best
+  [neighbours]
+  (last(sort-by fitness (map :best neighbours))))
 
 (defn update_particle
   "updates velocity and position of particle"
-  [particle]
+  [swarm particle]
   ;(println particle)
   (def velocity (vec_add
                  (:velocity particle)
                  (vec_mul (repeatedly rand) (vec_sub  (:best particle) (:position particle)))
-                 (vec_mul (repeatedly rand) (vec_sub   global_best (:position particle)))))
-  (def position (vec_add (:position particle) (vec_mul (repeat 0.005) velocity)))
+                 (vec_mul (repeatedly rand) (vec_sub   (:neighbour_best particle) (:position particle)))))
+  (def position (vec_add (:position particle) (vec_mul (repeat 0.01) velocity)))
   (def best (last (sort-by fitness [(:best particle) position])))
-  (update_global_best best)
   {:velocity velocity
    :position position
-   :best best})
+   :best best
+   :neighbour_best (get_neighbour_best (get_neighbours particle swarm 50))})
 
 
 (def swarm (create_random_swarm 32))
@@ -83,8 +86,8 @@
   [swarm count]
   (if (= 0 count)
     '()
-    (cons swarm (ps (map update_particle swarm) (dec count)))))
+    (cons swarm (ps (map (partial update_particle swarm) swarm) (dec count)))))
 
 
-(last(plot_swarms (ps swarm 512)))
+(last(plot_swarms (ps swarm 1024)))
 global_best
