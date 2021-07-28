@@ -18,16 +18,11 @@
 (defn createParticle
   ([] (createParticle 2))
   ([dimension]
-   (do
      (def initValue (take dimension (repeatedly rand)))
-
-     (identity {
-        :velocity (take dimension (repeatedly rand))
-        :position initValue
-        :best initValue
-        }
-     )
-   ))
+     {:velocity (take dimension (repeatedly rand))
+      :position initValue
+      :best initValue}
+   )
 )
 
 
