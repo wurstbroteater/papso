@@ -1,4 +1,74 @@
 (ns algorithm.core)
+(def test1 [3 5 -4])
+(def test2 [9 5 -2])
+
+(defn sqrt [n] (java.lang.Math/sqrt n))                     ;; sqrt wrapper
+(defn abs [n] (java.lang.Math/abs n))                       ;; abs wrapper
+(defn pow [b n] (java.lang.Math/pow b n))                   ;; pow wrapper
+(defn subV [v1] (map #(- %1 %2) v1))
+
+(defn zip [listeA listeB]
+  (if (not= (count listeA) (count listeB))
+    (throw (Exception. "zip: Not equal vector size"))
+    (map vector listeA listeB))
+  )                                                         ;; zip wrapper
+(defn squareV [liste] (map #(* % %) liste))                  ;; square list component wise
+(defn square [n] (* n n))
+(defn createParticle []
+  {:velocity (take 2 (repeatedly rand))                     ;; v vector
+   :position (take 2 (repeatedly rand))                     ;; x vector
+   :best (take 2 (repeatedly rand))}                        ;; p vector
+  )
+
+
+(defn getParticlePos [particle] (get particle :position))
+
+(defn euclidDis
+  ([p1 p2]
+   (euclidDis (zip p1 p2) 0 (count p1) [] ))
+  ([zippedPos start end out]
+   (if (= start end)
+     (identity out)
+     (euclidDis (rest zippedPos) (inc start) end (conj out ((square (reduce - (first zippedPos))))))
+     )
+  ))
+
+(defn distance [particle point]
+  (def dis (euclidDis (getParticlePos particle) point))
+  (if (= nil dis)
+    (throw (Exception. "Distance was nil"))
+    (identity dis))
+  )
+
+(defn start
+  ([iterations] (start iterations 3))
+  ([iterations popSize]
+   (do
+     ;; fill swarm
+     (def population (concat (take popSize (repeatedly createParticle))))
+     ;;
+     (loop [iteration 0]
+       (println "doing " iteration)
+       (println "more")
+
+       (if (< iteration (- iterations 1))
+         (recur (inc iteration))
+         (identity population)
+         )
+       )
+     ))
+ )
+(println (start 2))
+
+
+
+
+
+
+
+
+
+(comment
 (load-file "../gnuplot.clj")
 (defn sqrt [n] (java.lang.Math/sqrt n)) ;; sqrt wrapper
 (defn abs [n] (java.lang.Math/abs n)) ;; abs wrapper
@@ -77,6 +147,6 @@
   (if (= 0 count)
     '()
     (cons swarm (ps (map update_particle swarm) (dec count)))))
-
+)
 
 ;;(ps swarm 1000)
