@@ -15,16 +15,27 @@
 (defn square [n] (* n n))                                   ;; square a number
 (defn squareV [v] (vec (map square v)))                     ;; square a vector
 
-(defn createParticle []
-  {:velocity (take 2 (repeatedly rand))                     ;; v vector
-   :position (take 2 (repeatedly rand))                     ;; x vector
-   :best (take 2 (repeatedly rand))}                        ;; p vector
-  )
+(defn createParticle
+  ([] (createParticle 2))
+  ([dimension]
+   (do
+     (def initValue (take dimension (repeatedly rand)))
+
+     (identity {
+        :velocity (take dimension (repeatedly rand))
+        :position initValue
+        :best initValue
+        }
+     )
+   ))
+)
 
 
 (defn getParticlePos [particle] (get particle :position))
 
 (defn euclidDis [v1 v2]
+  "Calculate the euclidean distance of two vectors with the same dimension or
+  throws exception otherwise"
   (if (not= (count v1) (count v2))
     (throw (Exception. "euclidDis received vectors with different dimensions!"))
     (sqrt (sumV (squareV (subV v1 v2))))
