@@ -1,7 +1,7 @@
-(load-file "gnuplot.clj")
+(load-file "./src/algorithm/gnuplot.clj")
 (require '[clojure.string :as str])
 ;; load landscape data
-(def landscape (map (fn [line] (map read-string (str/split line #"\t"))) (str/split (slurp "landscape.tsv") #"\n")))
+(def landscape (map (fn [line] (map read-string (str/split line #"\t"))) (str/split (slurp "./resources/landscape.tsv") #"\n")))
 (def size (count landscape))
 (defn sqrt [n] (java.lang.Math/sqrt n)) ;; sqrt wrapper
 (defn abs [n] (java.lang.Math/abs n)) ;; abs wrapper
@@ -90,4 +90,3 @@
 
 
 (last(plot_swarms (ps swarm 1024)))
-global_best

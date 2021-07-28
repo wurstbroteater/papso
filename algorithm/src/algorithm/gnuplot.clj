@@ -1,11 +1,12 @@
 
-(def plotfile "plot.gnuplot")
+(def plotfile "resources/plot.gnuplot")
 
 (defn plot_swarm
   [swarm]
+  (def resource_path "resources/")
   (def pointfile (str "plotdata/" (first swarm) ".txt"))
   (spit plotfile (str "plot \"" pointfile "\",'cont.dat' w l lt -1 lw 0.5\n" ) :append true)
-  (spit pointfile
+  (spit (str resource_path pointfile)
         (reduce
          str
          (map (fn [string] (apply str (remove #(#{\[,\]} %) (str string "\n"))))
