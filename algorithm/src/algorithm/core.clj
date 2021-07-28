@@ -2,6 +2,7 @@
 (load-file "src/algorithm/gnuplot.clj")
 (require '[clojure.string :as str])
 (def landscape (map (fn [line] (map read-string (str/split line #"\t"))) (str/split (slurp "resources/landscape.tsv") #"\n")))
+;; TODO: delete or move dummies to test when done
 (def dummy1
   {:velocity [0.1 0.1]
    :position [1.0 2.0]
