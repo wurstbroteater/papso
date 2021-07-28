@@ -1,20 +1,21 @@
 (ns algorithm.core)
+(load-file "src/algorithm/gnuplot.clj")
 (require '[clojure.string :as str])
-(def landscape (map (fn [line] (map read-string (str/split line #"\t"))) (str/split (slurp "../landscape.tsv") #"\n")))
+(def landscape (map (fn [line] (map read-string (str/split line #"\t"))) (str/split (slurp "resources/landscape.tsv") #"\n")))
 (def dummy1
   {:velocity [0.1 0.1]
    :position [1.0 2.0]
-   :best [1.5 1.0]})
+   :best [1.5 1.0]
+   :neighboursBest [0 0]})
 (def dummy2
   {:velocity [0.1 0.1]
    :position [1.0 0.5]
-   :best [1.0 0.0]})
+   :best [1.0 0.0]
+   :neighboursBest [0 0]})
 (def dummies (list dummy1 dummy2))
 
 ;;                              Wrapper and utility methods
 (defn sqrt [n] (java.lang.Math/sqrt n))                     ;; sqrt wrapper
-(defn abs [n] (java.lang.Math/abs n))                       ;; abs wrapper
-(defn pow [b n] (java.lang.Math/pow b n))                   ;; pow wrapper
 (defn subV [v1 v2] (vec (map - v1 v2)))                     ;; vector subtraction
 (defn sumV [v] (apply + v))                                 ;; sum over a single vector
 (defn square [n] (* n n))                                   ;; square a number
@@ -33,13 +34,16 @@
 (defn createParticle
   ([] (createParticle 2))
   ([dimension]
-     (def initValue (take dimension (repeatedly rand)))
-     {:velocity (take dimension (repeatedly rand))          ;; v vector
+     (def initValue (take dimension (repeatedly #(rand 150))))
+     {:velocity (take dimension (repeatedly #(rand 150)))          ;; v vector
       :position initValue                                   ;; x vector
       :best initValue                                       ;; p vector
       :neighboursBest initValue}
    )
 )
+(defn createPopulation [popSize]
+  (concat (take popSize (repeatedly createParticle))))
+
 
 (defn fitness
   "calculates fitness for a point"
@@ -66,23 +70,34 @@
   )
 
 (defn updatePosition
-  ([particle] (updatePosition particle 0.005))
+  ([particle] (updatePosition particle 0.01))
   ([particle timeDelta]
    (vec (map + (particle :position) (mulSV timeDelta (particle :velocity)))))
   )
 
+(defn updateParticle [particle]
+  {:velocity (updateVelocity particle)
+   :position (updatePosition particle)
+   :best (updateParticleBest particle)
+   :neighboursBest (particle :neighboursBest)})
+
 (defn start
-  ([iterations] (start iterations 3))
-  ([iterations popSize]
+  ([iterations] (start iterations (createPopulation 32)))
+  ([iterations population]
      ;; fill swarm
-     (def population (concat (take popSize (repeatedly createParticle))))
+   (if (= iterations 0)
+     (list population)
+     (cons population (start (dec iterations) (map updateParticle  population))))))
+
+
+(comment
      ;;
      (loop [iteration 0]
-       (println "Step: " iteration)
+       ;;(println "Step: " iteration)
        ;;(println (first population))
-       (map #(update % :best updateParticleBest) population)
-       (map #(update % :velocity updateVelocity) population)
-       (map #(update % :position updatePosition) population)
+       (def population (map #(update % :best (fn [a] (updateParticleBest %))) population))
+       (def population (map #(update % :velocity (fn [a] (updateVelocity %))) population))
+       (def population (map #(update % :position (fn [a] (updatePosition %))) population))
 
 
        (if (< iteration (- iterations 1))
@@ -91,7 +106,6 @@
          )
        )
      )
- )
-
 ;;                              init call
-(println (start 2 2))
+(time (println (plot_swarms (start 600))))
+
