@@ -1,4 +1,6 @@
 (ns algorithm.core)
+(require '[clojure.string :as str])
+(def landscape (map (fn [line] (map read-string (str/split line #"\t"))) (str/split (slurp "../landscape.tsv") #"\n")))
 (def global_best '(-1 -1))
 (def dummy1
   {:velocity [0.1 0.1]
@@ -34,23 +36,34 @@
    )
 )
 
-
-(defn getParticlePos [particle] (get particle :position))
-
 (defn euclidDis [v1 v2]
-  "Calculate the euclidean distance of two vectors with the same dimension or
-  throws exception otherwise"
+  "Calculate the euclidean distance of two vectors with the same dimension or throws exception otherwise"
   (if (not= (count v1) (count v2))
     (throw (Exception. "euclidDis received vectors with different dimensions!"))
     (sqrt (sumV (squareV (subV v1 v2))))
   ))
 
-(defn distance [particle point]
-  (def dis (euclidDis (getParticlePos particle) point))
+(defn fitness
+  "calculates fitness for a point"
+  [position]
+  (nth (nth landscape (int (last position) ) '(-100)) (int (first position)) -100 ))
+
+(defn updateParticleBest [particle]
+  (if (< (fitness (particle :position)) (fitness (particle :best)))
+    (particle :position)
+    (particle :best)
+  ))
+
+
+
+(comment
+(defn fitness [particle point]
+  (def dis (euclidDis (particle :position) point))
   (if (= nil dis)
     (throw (Exception. "Distance was nil"))
     (identity dis))
   )
+)
 
 (defn updateVelocity
   ([particle] (updateVelocity particle (rand) (rand)))
@@ -69,7 +82,6 @@
 (defn start
   ([iterations] (start iterations 3))
   ([iterations popSize]
-   (do                                                      ;; do might be redundant
      ;; fill swarm
      (def population (concat (take popSize (repeatedly createParticle))))
      ;;
@@ -77,12 +89,13 @@
        (println "doing " iteration)
        (println "more")
 
+
        (if (< iteration (- iterations 1))
          (recur (inc iteration))
          (identity population)
          )
        )
-     ))
+     )
  )
 (println (start 2 2))
 
