@@ -3,4 +3,4 @@ dist: bionic
 
 language: clojure 
 
-script: lein spec
+script: lein test
