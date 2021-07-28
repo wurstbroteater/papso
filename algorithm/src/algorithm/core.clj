@@ -1,27 +1,36 @@
 (ns algorithm.core)
+(def global_best '(-1 -1))
+(def dummy1
+  {:velocity [0.1 0.1]
+   :position [1.0 2.0]
+   :best [1.0 1.0]})
 
 (defn sqrt [n] (java.lang.Math/sqrt n))                     ;; sqrt wrapper
 (defn abs [n] (java.lang.Math/abs n))                       ;; abs wrapper
 (defn pow [b n] (java.lang.Math/pow b n))                   ;; pow wrapper
 (defn subV [v1 v2] (vec (map - v1 v2)))                     ;; vector subtraction
-(defn sumV [v] (apply + v))                                 ; sum over a single vector
-
+(defn sumV [v] (apply + v))                                 ;; sum over a single vector
+(defn square [n] (* n n))                                   ;; square a number
+(defn squareV [v] (vec (map square v)))                     ;; square a vector
+(defn mulSV [scalar vector]
+  (vec (map (partial * scalar) vector)))                    ;; scalar mul vector
+(defn addSV [scalar vector]
+  (vec (map (partial * scalar) vector)))                    ;; scalar plus vector
 (defn zip [listeA listeB]
   (if (not= (count listeA) (count listeB))
     (throw (Exception. "zip received vectors with different dimensions!"))
     (map vector listeA listeB))
   )                                                         ;; zip wrapper
 
-(defn square [n] (* n n))                                   ;; square a number
-(defn squareV [v] (vec (map square v)))                     ;; square a vector
+
 
 (defn createParticle
   ([] (createParticle 2))
   ([dimension]
      (def initValue (take dimension (repeatedly rand)))
-     {:velocity (take dimension (repeatedly rand))
-      :position initValue
-      :best initValue}
+     {:velocity (take dimension (repeatedly rand))          ;; v vector
+      :position initValue                                   ;; x vector
+      :best initValue}                                      ;; p vector
    )
 )
 
@@ -43,10 +52,24 @@
     (identity dis))
   )
 
+(defn updateVelocity
+  ([particle] (updateVelocity particle (rand) (rand)))
+  ([particle p1 p2]
+   "Update velocity according to update rule with random values"
+   (def cognitive (mulSV p1 (subV (particle :best) (particle :position))))
+   (def social (mulSV p2 (subV global_best (particle :position))))
+   (vec (map + (particle :velocity) cognitive social)))
+  )
+
+(defn updatePosition
+  ([particle] (updatePosition particle 0.005))
+  ([particle timeDelta]
+   (vec (map + (particle :position) (mulSV timeDelta (particle :velocity)))))
+  )
 (defn start
   ([iterations] (start iterations 3))
   ([iterations popSize]
-   (do
+   (do                                                      ;; do might be redundant
      ;; fill swarm
      (def population (concat (take popSize (repeatedly createParticle))))
      ;;
@@ -61,7 +84,7 @@
        )
      ))
  )
-(println (start 2))
+(println (start 2 2))
 
 
 
@@ -118,7 +141,7 @@
   (def points [[0 0]])
   (-(apply min (map (partial vec_dist position) points))))
 
-(def global_best '(-1 -1))
+
 (defn update_global_best
   "trys to update the global best position"
   [position]
