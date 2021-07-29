@@ -1,3 +1,6 @@
+# Project Stuff
+/plotdata/*.txt
+
 # Project Clojure stuff
 /target
 /classes
