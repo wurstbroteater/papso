@@ -1,4 +1,4 @@
-# Parallel Asynchronous Particle Swarm Optimization  [![Build Status](https://app.travis-ci.com/wurstbroteater/papso.svg?branch=main)](https://app.travis-ci.com/wurstbroteater/papso)
+# Parallel Asynchronous Particle Swarm Optimization  [![Build Status](https://app.travis-ci.com/wurstbroteater/papso.svg?token=p8UbHeQhFdd4xZrZhbxs&branch=main)](https://app.travis-ci.com/wurstbroteater/papso)
 
 
 The implementation of the pseudo code written in the paper of Koh et al. (see literature folder)
