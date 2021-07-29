@@ -69,9 +69,9 @@
   [swarm particle]
   ;(println particle)
   (def velocity (vec_add
-                 (:velocity particle)
-                 (vec_mul (repeatedly rand) (vec_sub  (:best particle) (:position particle)))
-                 (vec_mul (repeatedly rand) (vec_sub   (:neighbour_best particle) (:position particle)))))
+                 (vec_mul (repeat 1) (:velocity particle))
+                 (vec_mul (repeatedly rand) (vec_sub (:best particle) (:position particle)))
+                 (vec_mul (repeatedly rand) (vec_sub (:neighbour_best particle) (:position particle)))))
   (def position (vec_add (:position particle) (vec_mul (repeat 0.01) velocity)))
   (def best (last (sort-by fitness [(:best particle) position])))
   {:velocity velocity
@@ -80,13 +80,13 @@
    :neighbour_best (get_neighbour_best (get_neighbours particle swarm 50))})
 
 
-(def swarm (create_random_swarm 32))
+(def swarm (create_random_swarm 320))
 
 (defn ps
   [swarm count]
   (if (= 0 count)
-    '()
+    (list swarm)
     (cons swarm (ps (map (partial update_particle swarm) swarm) (dec count)))))
 
 
-(last(plot_swarms (ps swarm 1024)))
+(plot_swarms (ps swarm 1024))
