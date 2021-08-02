@@ -1,5 +1,7 @@
 # Project Stuff
 /plotdata/*.txt
+/plot.pdf
+/resources/plot.gnuplot
 
 # Project Clojure stuff
 /target
