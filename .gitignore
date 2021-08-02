@@ -1,5 +1,5 @@
-# gnuplot cache
-
+# Project Stuff
+/plotdata/*.txt
 
 # Project Clojure stuff
 /target
@@ -232,6 +232,5 @@ buildNumber.properties
 .ionide
 
 # End of https://www.toptal.com/developers/gitignore/api/java,maven,intellij,visualstudiocode,eclipse
-
 
 
