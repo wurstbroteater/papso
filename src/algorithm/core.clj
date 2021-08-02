@@ -108,5 +108,5 @@
        )
      )
 ;;                              init call
-(time (println (plot_swarms (start 600))))
+;;(time (println (plot_swarms (start 600))))
 
