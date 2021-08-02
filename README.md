@@ -3,6 +3,9 @@
 
 The implementation of the pseudo code written in the paper of Koh et al. (see literature folder)
 
+## Requirements
+gnuplot
+
 ## Usage
 
 ```clojure
