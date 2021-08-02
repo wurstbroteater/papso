@@ -2,6 +2,7 @@
 /plotdata/*.txt
 /plot.pdf
 /resources/plot.gnuplot
+*.\#* #ignore emacs backup files
 
 # Project Clojure stuff
 /target
