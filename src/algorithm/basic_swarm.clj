@@ -58,4 +58,4 @@
     (cons swarm (ps (map (partial updateParticle swarm) swarm) (dec count)))))
 
 
-(plotSwarms (ps swarm 100))
+(plotSwarms (ps swarm 120))
