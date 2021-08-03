@@ -83,12 +83,13 @@
    :neighboursBest (particle :neighboursBest)})
 
 (defn start
-  ([iterations] (start iterations (createPopulation 32)))
-  ([iterations population]
+  ([iterations] (start iterations 32))
+  ([iterations popSize] (start iterations popSize (createPopulation popSize)))
+  ([iterations popSize population]
      ;; fill swarm
    (if (= iterations 0)
      (list population)
-     (cons population (start (dec iterations) (map updateParticle  population))))))
+     (cons population (start (dec iterations) popSize (map updateParticle population))))))
 
 
 (comment
