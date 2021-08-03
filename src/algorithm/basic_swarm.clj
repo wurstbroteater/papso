@@ -12,8 +12,8 @@
 (defn createRandomParticle
   "creates a particle for pso"
   []
-  (def position (take 2 (repeatedly #(rand size))))
-  {:velocity (take 2 (repeatedly #(rand size)))
+  (def position (take 3 (repeatedly #(rand size))))
+  {:velocity (take 3 (repeatedly #(rand size)))
    :position position
    :best position
    :neighbourBest position})
@@ -21,7 +21,7 @@
 (defn createRandomSwarm
   "creates a random swarm"
   [population_size]
-  (take population_size (repeatedly createRandomParticle)))
+  (take population_size (repeatedly #(agent (createRandomParticle)))))
 
 (defn fitness
   "calculates fitness for a point"
@@ -30,14 +30,14 @@
 
 (defn getNeighbours
   [particle swarm range]
-  (filter (fn [element] (> range (distV (:position element) (:position particle)))) swarm))
+  (filter (fn [element] (> range (distV (:position element) (:position particle)))) (map (fn [a] @a ) swarm)))
 
 (defn getNeighbourBest
   [neighbours]
-  (last(sort-by fitness (map :position neighbours))))
+  (last(sort-by fitness (map :best neighbours))))
 
-(defn updateParticle [swarm particle] "updates velocity and position of particle"
-  ;(println particle)
+(defn updateParticle
+  [swarm particle]
   (def velocity (addV
                  (mulV (repeat 1.00)(:velocity particle))
                  (mulV (repeatedly rand) (subV (:best particle) (:position particle)))
@@ -50,7 +50,10 @@
    :neighbourBest (getNeighbourBest (getNeighbours particle swarm 50))})
 
 
-(def swarm (createRandomSwarm 64))
+(def swarm (createRandomSwarm 32))
+
+(defn fly [swarm]
+  (map (fn [a] (send a (partial updateParticle swarm))) swarm))
 
 (defn ps [swarm count]
   (if (= 0 count)
@@ -58,4 +61,5 @@
     (cons swarm (ps (map (partial updateParticle swarm) swarm) (dec count)))))
 
 
-(plotSwarms (ps swarm 120))
+(time(plotSwarms (ps swarm 500)))
+
