@@ -3,6 +3,9 @@
 /plot.pdf
 /resources/plot.gnuplot
 
+# Emacs Backup files
+.#.*
+/**/.#.*
 # Project Clojure stuff
 /target
 /classes
