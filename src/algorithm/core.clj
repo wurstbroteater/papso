@@ -2,10 +2,6 @@
 (require '[quil.core :as q])
 
 
-(defn sqrt [n] (java.lang.Math/sqrt n)) ;; sqrt wrapper
-(defn abs [n] (java.lang.Math/abs n)) ;; abs wrapper
-(defn pow [b n] (java.lang.Math/pow b n)) ;; pow wrapper
-
 
 
 
