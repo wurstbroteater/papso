@@ -34,12 +34,12 @@
 
 (defn getNeighbourBest
   [neighbours]
-  (last(sort-by fitness (map :position neighbours))))
+  (last(sort-by fitness (map :best neighbours))))
 
 (defn updateParticle [swarm particle] "updates velocity and position of particle"
   ;(println particle)
   (def velocity (addV
-                 (mulV (repeat 1.00)(:velocity particle))
+                 (mulV (repeatedly #(rand 2))(:velocity particle))
                  (mulV (repeatedly rand) (subV (:best particle) (:position particle)))
                  (mulV (repeatedly rand) (subV (:neighbourBest particle) (:position particle)))))
   (def position (addV (:position particle) (mulV (repeat 0.01) velocity)))
