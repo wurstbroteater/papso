@@ -87,8 +87,8 @@
   ([iterations popSize] (start iterations popSize (createPopulation popSize)))
   ([iterations popSize population]
      ;; fill swarm
-   (if (= iterations 0)
-     (list population)
+   (if (<= (dec iterations) 0)
+      population
      (cons population (start (dec iterations) popSize (map updateParticle population))))))
 
 
@@ -109,5 +109,5 @@
        )
      )
 ;;                              init call
-;;(time (println (plot_swarms (start 600))))
+;;(time (println (plotSwarms (start 600))))
 
