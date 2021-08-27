@@ -1,2 +1,1 @@
-(defn updatePosition [particle position]
-  )
+
