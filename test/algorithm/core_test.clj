@@ -63,24 +63,36 @@
     (* (square (+ (* t (Math/signum (double zi))) zi)) c di))
   (* di (square xi)))
 
-(comment
-  (defn h3 [xList t s c di]
-    "use it like this (h3 1 2.4 3.0 ...) "
-    (letfn [(item [element]
-              (itemH3 element (itemH3Z element)))]))
+(defn itemH3D [i] (case (mod i 4)
+                    1 1
+                    2 1000
+                    3 10
+                    100))
+
+(def xi 2.5)
+(def s 0.2)
+(def zi (itemH3Z xi s))
+(def c 0.15)
 
 
+(def t 0.05)
+(def index 3)
+(itemH3 xi zi t c (itemH3D index))
 
-  (deftest analyticalTestProblemH3Test
-    (testing "Testing H3 function"
-      (def initC 0.15)
-      (def initD 1)
-      (def initS 0.2)
-      (def initT 0.05)
-      (def initX '(1 2 3 4))
+(defn h3
+  ([xs] (h3 xs 0.05 0.2 0.15))
+  ([xs t s c]
+  (map-indexed (fn [i x]
+                 (itemH3 x (itemH3Z x s) t c (itemH3D i))) xs)))
 
-      (is (= 0.026215463876724243 (h3 initX initT initS initC initD)))))
-  )
+(deftest analyticalTestProblemH3Test
+  (testing "Testing H3 function"
+    (def initC 0.15)
+    (def initS 0.2)
+    (def initT 0.05)
+    (def initX '(1 2 3 4))
+
+    (is (= 0.026215463876724243 (h3 initX initT initS initC)))))
 
 ;; evaluated the expected test values with wolfram alpha
 (deftest analyticalTestProblemH1Test
