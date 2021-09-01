@@ -60,11 +60,11 @@
 
 (defn itemH3 [xi zi t c di]
   (if (< (Math/abs (- xi zi)) t)
-    (* (square (+ (* t (Math/signum zi)) zi)) c di))
+    (* (square (+ (* t (Math/signum (double zi))) zi)) c di))
   (* di (square xi)))
 
 (comment
-  (defn h3 [& inputs]
+  (defn h3 [xList t s c di]
     "use it like this (h3 1 2.4 3.0 ...) "
     (letfn [(item [element]
               (itemH3 element (itemH3Z element)))]))
@@ -73,7 +73,13 @@
 
   (deftest analyticalTestProblemH3Test
     (testing "Testing H3 function"
-      (is (= 0.026215463876724243 (itemH3Z 1 -1)))))
+      (def initC 0.15)
+      (def initD 1)
+      (def initS 0.2)
+      (def initT 0.05)
+      (def initX '(1 2 3 4))
+
+      (is (= 0.026215463876724243 (h3 initX initT initS initC initD)))))
   )
 
 ;; evaluated the expected test values with wolfram alpha
