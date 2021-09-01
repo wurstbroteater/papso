@@ -1,4 +1,5 @@
 (ns algorithm.core)
+(load "swarm")
 (require '[quil.core :as q] '[quil.middleware :as m])
 (def hack (agent 0)) ;; allows delayed execution of ps
 (defn setup [] ;; returns state

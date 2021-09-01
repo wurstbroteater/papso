@@ -28,7 +28,7 @@
 (def running true)
 (defn updateParticle
   [particle]
-  ;;(Thread/sleep 24) ;; gives priority to render thread - comment to get max performance
+  (Thread/sleep 24) ;; gives priority to render thread - comment to get max performance
   (when running
     (send-off *agent* updateParticle));; "recursive" call
   (def velocity (addV
