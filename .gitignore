@@ -2,6 +2,8 @@
 /plotdata/*.txt
 /plot.pdf
 /resources/plot.gnuplot
+#ignore emacs backup files
+*.\#*
 
 # Emacs Backup files
 .#.*

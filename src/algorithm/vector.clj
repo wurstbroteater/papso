@@ -1,3 +1,10 @@
+
+(defn sqrt [n] (java.lang.Math/sqrt n)) ;; sqrt wrapper
+(defn abs [n] (java.lang.Math/abs n)) ;; abs wrapper
+(defn pow [b n] (java.lang.Math/pow b n)) ;; pow wrapper
+
+
+
 (def subV ;; subtracts n vectors component wiseq
   (partial map -))
 
