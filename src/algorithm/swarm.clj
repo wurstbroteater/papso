@@ -1,11 +1,21 @@
 (ns algorithm.core)
+(require '[clojure.string :as str])
 (load "vector")
-(load "fitness")
-(defn randomPosition [] (take 2 (repeatedly #(rand size))))
+
+(def dimensions 2)
 (def groupCount 20)
-(defn createRandomParticle
-  "creates a particle for pso"
-  []
+(def running true)
+
+(def landscape (map (fn [line] (map read-string (str/split line #"\t"))) (str/split (slurp "./resources/landscape.tsv") #"\n")))
+(def size (count landscape))
+
+(defn fitness [position] ;; calculates fitness for a point
+  (nth (nth landscape (int (last position) ) '(-100)) (int (first position)) -100 ))
+
+
+(defn randomPosition [] (repeatedly dimensions #(rand size)))
+
+(defn createRandomParticle "creates a particle for pso" []
   (def position (randomPosition))
   {
    :groupId (rand-int groupCount)
@@ -16,7 +26,7 @@
    :best (randomPosition)})
 
 (defn createRandomSwarm [population_size] ;; create a random swarm
-    (take population_size (repeatedly createRandomParticle)))
+    (repeatedly  population_size createRandomParticle))
 
 (def groupBest (map agent (repeatedly groupCount randomPosition)))
 
@@ -25,7 +35,6 @@
     (do (send (nth groupBest groupId) (fn [a] position)) position)
     (deref (nth groupBest groupId))))
 
-(def running true)
 (defn updateParticle
   [particle]
   (Thread/sleep 24) ;; gives priority to render thread - comment to get max performance
