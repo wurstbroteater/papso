@@ -1,2 +1,3 @@
-(load-file "./src/algorithm/visualize.clj")
+(ns algorithm.core)
+(load "visualize")
 (visualRun)

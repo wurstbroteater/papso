@@ -1,7 +1,5 @@
-
+(ns algorithm.core)
 (require '[quil.core :as q] '[quil.middleware :as m])
-(load-file "./src/algorithm/vector.clj")
-(load-file "./src/algorithm/basic_swarm.clj")
 (def hack (agent 0)) ;; allows delayed execution of ps
 (defn setup [] ;; returns state
   (q/resize-sketch 675 675) 
