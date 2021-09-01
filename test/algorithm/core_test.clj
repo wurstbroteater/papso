@@ -1,6 +1,6 @@
 (ns algorithm.core-test
   (:require [clojure.test :refer :all]
-            [algorithm.core :refer :all]))
+            [algorithm.core_eric :refer :all]))
 
 (defn equal?
   ([x y] (equal? x y 0.001))

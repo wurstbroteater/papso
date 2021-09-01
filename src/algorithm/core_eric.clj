@@ -1,4 +1,4 @@
-(ns algorithm.core)
+(ns algorithm.core_eric)
 (load-file "src/algorithm/gnuplot.clj")
 (require '[clojure.string :as str])
 (def landscape (map (fn [line] (map read-string (str/split line #"\t"))) (str/split (slurp "resources/landscape.tsv") #"\n")))
