@@ -56,41 +56,31 @@
   (- 0.5 (ddiv numeratorH2 denominatorH2)))
 
 (defn itemH3Z [xi s]
-  (* (Math/floor (+ (Math/abs (ddiv xi s)) 0.4999999999999)) (Math/signum (double xi)) s))
+  (* (Math/round (Math/abs (ddiv xi s))) (Math/signum (double xi)) s))
 
 (defn itemH3 [xi zi t c di]
   (if (< (Math/abs (- xi zi)) t)
     (* (square (+ (* t (Math/signum (double zi))) zi)) c di))
   (* di (square xi)))
 
-(defn itemH3D [i] (case (mod i 4)
-                    1 1
-                    2 1000
-                    3 10
-                    100))
-
-(def xi 2.5)
-(def s 0.2)
-(def zi (itemH3Z xi s))
-(def c 0.15)
-
-
-(def t 0.05)
-(def index 3)
-(itemH3 xi zi t c (itemH3D index))
+(defn itemH3D [i] (case (mod i 4.0)
+                    1.0 1.0
+                    2.0 1000.0
+                    3.0 10.0
+                    100.0))
 
 (defn h3
   ([xs] (h3 xs 0.05 0.2 0.15))
   ([xs t s c]
   (map-indexed (fn [i x]
-                 (itemH3 x (itemH3Z x s) t c (itemH3D i))) xs)))
+                 (itemH3 x (itemH3Z x s) t c (itemH3D (inc i)))) xs)))
 
 (deftest analyticalTestProblemH3Test
   (testing "Testing H3 function"
     (def initC 0.15)
     (def initS 0.2)
     (def initT 0.05)
-    (def initX '(1 2 3 4))
+    (def initX '(1.0 2.0 3.0 4.0))
 
     (is (= 0.026215463876724243 (h3 initX initT initS initC)))))
 
@@ -102,3 +92,35 @@
 (deftest analyticalTestProblemH2Test
   (testing "Testing H2 function"
     (is (= 0.026215463876724243 (h2 1 -1)))))
+
+(deftest itemH3Z1Test
+  (testing "Testing itemH3Z function with parameter 1 -1"
+    (is (= -1.0 (itemH3Z 1 -1)))))
+
+(deftest itemH3Z2Test
+  (testing "Testing itemH3Z function with parameter -1 1"
+    (is (= 1.0 (itemH3Z -1 1)))))
+
+(deftest itemH3Z3Test
+  (testing "Testing itemH3Z function with parameter 1 0.2"
+    (is (= 1.0 (itemH3Z 1 0.2)))))
+
+(deftest itemH3D1Test
+  (testing "Testing itemH3D function with parameter 1"
+    (is (= 1.0 (itemH3D 1)))))
+
+(deftest itemH3D2Test
+  (testing "Testing itemH3D function with parameter 2"
+    (is (= 1000.0 (itemH3D 2)))))
+
+(deftest itemH3D3Test
+  (testing "Testing itemH3D function with parameter 3"
+    (is (= 10.0 (itemH3D 3)))))
+
+(deftest itemH3D4Test
+  (testing "Testing itemH3D function with parameter 4"
+    (is (= 100.0 (itemH3D 4)))))
+
+(deftest itemH3D5Test
+  (testing "Testing itemH3D function with parameter 5"
+    (is (= 1.0 (itemH3D 5)))))
