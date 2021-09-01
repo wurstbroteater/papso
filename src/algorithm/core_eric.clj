@@ -1,4 +1,4 @@
-(ns algorithm.core)
+(ns algorithm.core_eric)
 (load-file "src/algorithm/gnuplot.clj")
 (require '[clojure.string :as str])
 (def landscape (map (fn [line] (map read-string (str/split line #"\t"))) (str/split (slurp "resources/landscape.tsv") #"\n")))
@@ -16,7 +16,8 @@
 (def dummies (list dummy1 dummy2))
 
 ;;                              Wrapper and utility methods
-(defn sqrt [n] (java.lang.Math/sqrt n))                     ;; sqrt wrapper
+(defn ddiv [n d] (float (/ n d)))                           ;; division in double wrapper
+(defn sqrt [n] (Math/sqrt n))                               ;; sqrt wrapper
 (defn subV [v1 v2] (vec (map - v1 v2)))                     ;; vector subtraction
 (defn sumV [v] (apply + v))                                 ;; sum over a single vector
 (defn square [n] (* n n))                                   ;; square a number
