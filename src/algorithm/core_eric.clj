@@ -1,5 +1,4 @@
 (ns algorithm.core_eric)
-(load-file "src/algorithm/gnuplot.clj")
 (require '[clojure.string :as str])
 (def landscape (map (fn [line] (map read-string (str/split line #"\t"))) (str/split (slurp "resources/landscape.tsv") #"\n")))
 ;; TODO: delete or move dummies to test when done
@@ -92,7 +91,6 @@
       population
      (cons population (start (dec iterations) popSize (map updateParticle population))))))
 
-
 (comment
      ;;
      (loop [iteration 0]
@@ -102,7 +100,6 @@
        (def population (map #(update % :velocity (fn [a] (updateVelocity %))) population))
        (def population (map #(update % :position (fn [a] (updatePosition %))) population))
 
-
        (if (< iteration (- iterations 1))
          (recur (inc iteration))
          (identity population)
@@ -111,4 +108,3 @@
      )
 ;;                              init call
 ;;(time (println (plotSwarms (start 600))))
-
