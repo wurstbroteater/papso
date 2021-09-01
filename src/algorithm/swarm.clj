@@ -1,16 +1,18 @@
 (ns algorithm.core)
 (require '[clojure.string :as str])
 (load "vector")
-
+(load "H3")
 (def dimensions 2)
 (def groupCount 20)
 (def running true)
 
-(def landscape (map (fn [line] (map read-string (str/split line #"\t"))) (str/split (slurp "./resources/landscape.tsv") #"\n")))
-(def size (count landscape))
+;;(def landscape (map (fn [line] (map read-string (str/split line #"\t"))) (str/split (slurp "./resources/landscape.tsv") #"\n")))
+(def size 300)
+
 
 (defn fitness [position] ;; calculates fitness for a point
-  (nth (nth landscape (int (last position) ) '(-100)) (int (first position)) -100 ))
+  (-(h3 position)))
+;;  (nth (nth landscape (int (last position) ) '(-100)) (int (first position)) -100 ))
 
 
 (defn randomPosition [] (repeatedly dimensions #(rand size)))
