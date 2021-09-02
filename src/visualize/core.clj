@@ -8,7 +8,7 @@
   (q/frame-rate -1)
   (q/background 0)
   (q/stroke 255 255 255)
-  (send hack ps))
+  (send hack psa/ps))
 
 (defn draw-state []
   "
@@ -24,7 +24,7 @@
   (doseq [[x y] (map :best (map deref psa/swarm))]
     (q/point (* 1.5 (+ x 150)) (* 1.5(+ y 150))))
   (q/stroke 255 255 255)
-  (doseq [[x y] (map deref groupBest)]
+  (doseq [[x y] (map deref psa/groupBest)]
     (q/point (* 1.5 (+ x 150)) (* 1.5(+ y 150)))))
 
 (defn visualRun [& args]
