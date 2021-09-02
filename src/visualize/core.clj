@@ -4,6 +4,8 @@
 (require '[algorithm.swarm :as psa])
 (require '[testfunction.core :as atf])
 (def hack (agent 0)) ;; allows delayed execution of ps
+
+(def heatMap )
 (defn setup [] ;; returns state
   (q/resize-sketch 675 675)
   (q/frame-rate -1)

@@ -39,7 +39,7 @@
 
 (defn updateParticle
   [particle]
-  (Thread/sleep 24)                                         ;; gives priority to render thread - comment to get max performance
+  ;;(Thread/sleep 24)                                         ;; gives priority to render thread - comment to get max performance
   (when running
     (send-off *agent* updateParticle))                      ;; "recursive" call
   (def velocity (util/addV
@@ -62,10 +62,12 @@
   (Thread/sleep 2000)
   (doall (map (fn [a] (send a updateParticle)) swarm)))
 
-(defn psSync [iter]
+
+(defn psSync [iter mapFun]
+  "Synchronous psa with either pmap (parallel) or map (non-parallel) "
   (alter-var-root #'running (constantly false))
-  (loop [swarmSync (createRandomSwarm 1024)]
+  (loop [swarmSync (createRandomSwarm 10240)]
     (if (not= (:iterations (first swarmSync)) iter)
       (do(println (:iterations (first swarmSync)))
-         (recur (pmap updateParticle swarmSync)))
+         (recur (doall (mapFun updateParticle swarmSync))))
       swarmSync)))
