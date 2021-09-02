@@ -59,7 +59,8 @@
 (def swarm (map agent (createRandomSwarm 1024)))
 
 (defn ps [foo]
-  (Thread/sleep 2000)
+  ;;(Thread/sleep 2000)
+  (alter-var-root #'running (constantly true))
   (doall (map (fn [a] (send a updateParticle)) swarm)))
 
 
