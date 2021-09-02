@@ -1,3 +1,3 @@
 (ns algorithm.core)
-(load "visualize")
-(visualRun)
+(require '[visualize.core :as v] )
+(v/visualRun)
