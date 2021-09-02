@@ -10,42 +10,7 @@
   ([x y eps]
    (< (Math/abs (- x y)) eps)))
 
-(def vectors {:v1 [3 5 -4] :v2 [9 5 -2]})
-(deftest euclidDisUsageTest
-  (testing "Testing euclidDis: Correct usage"
-    (def euclidDisExpectedValue 6.324555320336759)
-    (is (equal? euclidDisExpectedValue (euclidDis (vectors :v1) (vectors :v2))))))
-
-(deftest euclidDisIncorrectSizeTest
-  (testing "Testing euclidDis: Incorrect vector dimension"
-    (is (thrown? Exception (euclidDis (vectors :v1) (conj (vectors :v2) 1))))))
-
-(deftest startReturnAmount0Test
-  (testing "Testing the number of returned populations by start with 0 iterations and 0 particles"
-    (is (equal? 0 (count (start 0 0))))))
-
-(deftest startReturnAmount1Test
-  (testing "Testing the number of returned populations by start with 1 iterations and 0 particles"
-    (is (equal? 0 (count (start 1 0))))))
-
-(deftest startReturnAmount2Test
-  (testing "Testing the number of returned populations by start with 0 iterations and 1 particles"
-    (is (equal? 1 (count (start 0 1))))))
-
-(deftest startReturnAmount3Test
-  (testing "Testing the number of returned populations by start with 1 iterations and 1 particles"
-    (is (equal? 1 (count (start 1 1))))))
-
-(deftest startReturnAmount4Test
-  (testing "Testing the number of returned populations by start with 2 iterations and 1 particles"
-    (is (equal? 2 (count (start 2 1))))))
-
-(deftest startReturnAmount5Test
-  (testing "Testing the number of returned populations by start with 2 iterations and 2 particles"
-    (is (equal? 3 (count (start 2 2))))))
-
 ;;----------------------------- Analytical Test Problem Functions
-
 ;; x_i in [-100, 100]
 (defn h1 [x1 x2]
   (def numeratorH1
@@ -81,7 +46,7 @@
   ([xs] (h3 xs 0.05 0.2 0.15))
   ([xs t s c]
    (apply + (map-indexed (fn [i x]
-                           (itemH3 x (itemH3Z x s) t c (itemH3D (inc i)))) xs)))) ;inc i because papers starts at 1
+                           (itemH3 x (itemH3Z x s) t c (itemH3D (inc i)))) xs)))) ;;inc i because papers starts at 1
 
 (defn sumH4 [xs d]
   (apply + (map (fn [x]
@@ -89,14 +54,15 @@
 
 (defn productH4 [xs]
   (apply * (map-indexed (fn [i x]
-                 (Math/cos (ddiv x (sqrt (inc i))))) xs)))      ;inc i because papers starts at 1
+                          (Math/cos (ddiv x (sqrt (inc i))))) xs))) ;;inc i because papers starts at 1
+
+;; x_i in [-600, 600]
 (defn h4
   ([xs] (h4 xs 4000))
   ([xs d]
    (def sumOut (sumH4 xs d))
    (def productOut (productH4 xs))
    (+ (- sumOut productOut) 1)))
-
 
 ;;----------------------------- Show usage and tests for analytical test problems
 (deftest analyticalTestProblemH1Test
@@ -154,7 +120,6 @@
     (def itemH3TestC 0.15)
     (def itemH3TestD 1000.0)
     (is (equal? 630.375 (itemH3 itemH3TestX itemH3TestZ itemH3TestT itemH3TestC itemH3TestD)))))
-
 
 ;;-------------- Tests for itemH3Z
 (deftest itemH3Z1Test
@@ -215,3 +180,39 @@
 (deftest productH42Test
   (testing "Testing productH4 wit parameter xs = '(1 1)"
     (is (= (* (Math/cos 1) (Math/cos (ddiv 1 (sqrt 2)))) (productH4 '(1 1))))))
+
+;;---------------------------- Tests for general utility methods
+(def vectors {:v1 [3 5 -4] :v2 [9 5 -2]})
+
+(deftest euclidDisUsageTest
+  (testing "Testing euclidDis: Correct usage"
+    (def euclidDisExpectedValue 6.324555320336759)
+    (is (equal? euclidDisExpectedValue (euclidDis (vectors :v1) (vectors :v2))))))
+
+(deftest euclidDisIncorrectSizeTest
+  (testing "Testing euclidDis: Incorrect vector dimension"
+    (is (thrown? Exception (euclidDis (vectors :v1) (conj (vectors :v2) 1))))))
+
+(deftest startReturnAmount0Test
+  (testing "Testing the number of returned populations by start with 0 iterations and 0 particles"
+    (is (equal? 0 (count (start 0 0))))))
+
+(deftest startReturnAmount1Test
+  (testing "Testing the number of returned populations by start with 1 iterations and 0 particles"
+    (is (equal? 0 (count (start 1 0))))))
+
+(deftest startReturnAmount2Test
+  (testing "Testing the number of returned populations by start with 0 iterations and 1 particles"
+    (is (equal? 1 (count (start 0 1))))))
+
+(deftest startReturnAmount3Test
+  (testing "Testing the number of returned populations by start with 1 iterations and 1 particles"
+    (is (equal? 1 (count (start 1 1))))))
+
+(deftest startReturnAmount4Test
+  (testing "Testing the number of returned populations by start with 2 iterations and 1 particles"
+    (is (equal? 2 (count (start 2 1))))))
+
+(deftest startReturnAmount5Test
+  (testing "Testing the number of returned populations by start with 2 iterations and 2 particles"
+    (is (equal? 3 (count (start 2 2))))))
