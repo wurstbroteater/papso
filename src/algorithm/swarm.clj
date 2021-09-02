@@ -2,16 +2,42 @@
 (require '[utility.core :as util])
 (require '[testfunction.core :as atf])
 
+;;global vars
 (def dimensions 2)
 (def groupCount 20)
 (def running true)
+(defn evalFunction [x] (atf/h3 x))                          ;; default analytical test function is h3
+
+(defn resetGlobals []
+  (alter-var-root #'running (constantly true))
+  (alter-var-root #'groupBest (constantly (map agent (repeatedly groupCount randomPosition))))
+  (alter-var-root #'swarm (constantly (map agent (createRandomSwarm 1024)))))
+
+(comment
+(defn changeEvalFunction [f] (case f
+      "h1" (alter-var-root
+             (var evalFunction)                             ;; var to alter
+             (fn [f]                                        ;; fn to apply to the var's value
+               (fn [x]                                      ;; returns a new fn wrapping old fn
+                (atf/h1 x))))
+      "h2" (alter-var-root
+             (var evalFunction)
+             (fn [f]
+               (fn [x]
+                 (atf/h2 x))))
+      (alter-var-root                                       ;; default case is h3
+        (var evalFunction)
+        (fn [f]
+          (fn [x]
+            (atf/h3 x))))))
+)
 
 ;;(def landscape (map (fn [line] (map read-string (str/split line #"\t"))) (str/split (slurp "./resources/landscape.tsv") #"\n")))
 (def size 300)
 
 
 (defn fitness [position]                                    ;; calculates fitness for a point
-  (- (atf/h3 position)))
+  (- (evalFunction position)))
 ;;  (nth (nth landscape (int (last position) ) '(-100)) (int (first position)) -100 ))
 
 
@@ -65,11 +91,6 @@
 
 (defn stopPs []
   (alter-var-root #'running (constantly false)))
-
-(defn resetGlobals []
-  (alter-var-root #'running (constantly true))
-  (alter-var-root #'groupBest (constantly (map agent (repeatedly groupCount randomPosition))))
-  (alter-var-root #'swarm (constantly (map agent (createRandomSwarm 1024)))))
 
 (defn psSync [iter swarmSize mapFun]
   "Synchronous psa with either pmap (parallel) or map (non-parallel) "
