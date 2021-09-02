@@ -76,13 +76,29 @@
     (* (square (+ (* t (Math/signum (double zi))) zi)) c di)
     (* di (square xi))))
 
+;; x_i in [-1000, 1000]
 (defn h3
   ([xs] (h3 xs 0.05 0.2 0.15))
   ([xs t s c]
    (apply + (map-indexed (fn [i x]
-                           (itemH3 x (itemH3Z x s) t c (itemH3D (inc i)))) xs))))
+                           (itemH3 x (itemH3Z x s) t c (itemH3D (inc i)))) xs)))) ;inc i because papers starts at 1
 
-;;----------------------------- Evaluated the expected test values with wolfram alpha
+(defn sumH4 [xs d]
+  (apply + (map (fn [x]
+                  (ddiv (square x) d)) xs)))
+
+(defn productH4 [xs]
+  (apply * (map-indexed (fn [i x]
+                 (Math/cos (ddiv x (sqrt (inc i))))) xs)))      ;inc i because papers starts at 1
+(defn h4
+  ([xs] (h4 xs 4000))
+  ([xs d]
+   (def sumOut (sumH4 xs d))
+   (def productOut (productH4 xs))
+   (+ (- sumOut productOut) 1)))
+
+
+;;----------------------------- Show usage and tests for analytical test problems
 (deftest analyticalTestProblemH1Test
   (testing "Testing H1 function"
     (is (equal? 0.11755694 (h1 1 -1)))))
@@ -100,9 +116,17 @@
     ;;0.165375 +  630.375
     (is (equal? 630.540375 (h3 initX initT initS initC)))))
 
+(deftest analyticalTestProblemH4Test
+  (testing "Testing H4 function"
+    (def initH4X '(1 1))
+    (def initH4D 4000)
+    ;;0.026215463876724243 + 0.56352262307559496
+    (is (= 0.5897380869523192 (h4 initH4X initH4D)))))
+
+;;---------------------------- Tests for help method for analytical test problems
 ;;-------------- Tests for itemH3
 (deftest itemH31Test
-  (testing "Testing itemH3  with x = 2, d= 1"
+  (testing "Testing itemH3 with x = 2, d = 1"
     (def itemH3TestX 2.0)
     (def itemH3TestZ 2.0)
     (def itemH3TestS 0.2)
@@ -112,7 +136,7 @@
     (is (= 0.6303749999999999 (itemH3 itemH3TestX itemH3TestZ itemH3TestT itemH3TestC itemH3TestD)))))
 
 (deftest itemH32Test
-  (testing "Testing itemH3 function wtih x = 1, d = 1"
+  (testing "Testing itemH3 function with x = 1, d = 1"
     (def itemH3TestX 1.0)
     (def itemH3TestZ 1.0)
     (def itemH3TestS 0.2)
@@ -122,7 +146,7 @@
     (is (= 0.165375 (itemH3 itemH3TestX itemH3TestZ itemH3TestT itemH3TestC itemH3TestD)))))
 
 (deftest itemH33Test
-  (testing "Testing itemH3  with x = 2, d= 1000"
+  (testing "Testing itemH3 with x = 2, d = 1000"
     (def itemH3TestX 2.0)
     (def itemH3TestZ 2.0)
     (def itemH3TestS 0.2)
@@ -173,3 +197,21 @@
 (deftest itemH3D5Test
   (testing "Testing itemH3D function with parameter 5"
     (is (equal? 1.0 (itemH3D 5)))))
+
+;;-------------- Tests for sumH4
+(deftest sumH41Test
+  (testing "Testing sumH4 wit parameter xs = '(1), d = 4000"
+    (is (equal? 0.0025 (sumH4 '(1) 400)))))
+
+(deftest sumH42Test
+  (testing "Testing sumH4 wit parameter xs = '(1 1), d = 4000"
+    (is (equal? 0.005 (sumH4 '(1 1) 400)))))
+
+;;-------------- Tests for productH4
+(deftest productH41Test
+  (testing "Testing productH4 wit parameter xs = '(1)"
+    (is (= (Math/cos 1) (productH4 '(1))))))
+
+(deftest productH42Test
+  (testing "Testing productH4 wit parameter xs = '(1 1)"
+    (is (= (* (Math/cos 1) (Math/cos (ddiv 1 (sqrt 2)))) (productH4 '(1 1))))))
