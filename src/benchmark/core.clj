@@ -4,36 +4,39 @@
 (require '[algorithm.swarm :as psa])
 (require '[clojure.pprint :as pp])
 
-(defmacro sectime
-  [expr]
-  "get elapsed time in seconds"
-  `(let [start# (. System (currentTimeMillis))
-         ret# ~expr]
-     (prn (str "Elapsed time: " (/ (double (- (. System (currentTimeMillis)) start#)) 1000.0) " secs"))
-     ret#))
+(defn getBest []
+  (last (sort-by psa/fitness (map deref psa/groupBest))))
 
 (println "particle swarm optimization with 1000 iterations and 1000 particles took: ")
-(def outSwarm (sectime (psa/psSync 1000 1000 map)))
+(def startTime (System/currentTimeMillis))
+(def outSwarm (psa/psSync 10 1000 map))
+(def deltaTime (- (System/currentTimeMillis) startTime))
+(println (str deltaTime " ms"))
 ;;(pp/pprint outSwarm)
 (print "Best position should be (0.00 +- 0.005, 0.00 +- 0.005). Swarm calculated ")
-(pp/pprint (first (sort-by psa/fitness (map :best outSwarm))))
-;;(println (apply + (map :iterations outSwarm)))
+(pp/pprint (getBest))
+(psa/resetGlobals)
 (println "--------------------------------------------------------------------------------------")
 
 (println "parallel synchronous particle swarm optimization with 1000 iterations and 1000 particles took: ")
-(def outSwarm (sectime (psa/psSync 1000 1000 pmap)))
+(def startTime (System/currentTimeMillis))
+(def outSwarm (psa/psSync 1000 1000 pmap))
+(def deltaTime (- (System/currentTimeMillis) startTime))
+(println (str deltaTime " ms"))
 ;;(pp/pprint outSwarm)
 (print "Best position should be (0.00 +- 0.005, 0.00 +- 0.005). Swarm calculated ")
-(pp/pprint (first (sort-by psa/fitness (map :best outSwarm))))
+(pp/pprint (getBest))
+(psa/resetGlobals)
 (println "--------------------------------------------------------------------------------------")
 
-(println "parallel asynchronous particle swarm optimization with 1000 iterations and 1000 particles took: ")
+(println (str "parallel asynchronous particle swarm optimization with " deltaTime "ms yielded"))
 ;; needs dummy int because felix is dummy
-(psa/ps 1.0)
-(Thread/sleep 16000)
-(shutdown-agents)
-(print "iterations: ")
-(println (apply + (map :iterations (map deref psa/swarm))))
+(first(psa/ps 1.0))
+(Thread/sleep deltaTime)
+(psa/stopPs)
+(println (str(apply + (map :iterations (map deref psa/swarm)))) " iterations")
 (print "Best position should be (0.00 +- 0.005, 0.00 +- 0.005). Swarm calculated ")
-(pp/pprint (first (sort-by psa/fitness (map :best (map deref psa/swarm)))))
+(pp/pprint (getBest))
+(Thread/sleep 3000) ;; prevents running to be set to true too soon
+(psa/resetGlobals)
 ;;(println (apply + (map :iterations outSwarm)))

@@ -63,6 +63,13 @@
   (alter-var-root #'running (constantly true))
   (doall (map (fn [a] (send a updateParticle)) swarm)))
 
+(defn stopPs []
+  (alter-var-root #'running (constantly false)))
+
+(defn resetGlobals []
+  (alter-var-root #'running (constantly true))
+  (alter-var-root #'groupBest (constantly (map agent (repeatedly groupCount randomPosition))))
+  (alter-var-root #'swarm (constantly (map agent (createRandomSwarm 1024)))))
 
 (defn psSync [iter swarmSize mapFun]
   "Synchronous psa with either pmap (parallel) or map (non-parallel) "
