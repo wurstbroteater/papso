@@ -68,6 +68,5 @@
   (alter-var-root #'running (constantly false))
   (loop [swarmSync (createRandomSwarm swarmSize)]
     (if (not= (:iterations (first swarmSync)) iter)
-      (do(println (:iterations (first swarmSync)))
-         (recur (doall (mapFun updateParticle swarmSync))))
+      (recur (doall (mapFun updateParticle swarmSync)))
       swarmSync)))
