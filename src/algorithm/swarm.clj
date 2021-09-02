@@ -61,3 +61,11 @@
 (defn ps [foo]
   (Thread/sleep 2000)
   (doall (map (fn [a] (send a updateParticle)) swarm)))
+
+(defn psSync [iter]
+  (alter-var-root #'running (constantly false))
+  (loop [swarmSync (createRandomSwarm 1024)]
+    (if (not= (:iterations (first swarmSync)) iter)
+      (do(println (:iterations (first swarmSync)))
+         (recur (pmap updateParticle swarmSync)))
+      swarmSync)))

@@ -2,6 +2,7 @@
 
 (require '[quil.core :as q] '[quil.middleware :as m])
 (require '[algorithm.swarm :as psa])
+(require '[testfunction.core :as atf])
 (def hack (agent 0)) ;; allows delayed execution of ps
 (defn setup [] ;; returns state
   (q/resize-sketch 675 675)
