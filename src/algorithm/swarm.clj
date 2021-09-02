@@ -63,10 +63,10 @@
   (doall (map (fn [a] (send a updateParticle)) swarm)))
 
 
-(defn psSync [iter mapFun]
+(defn psSync [iter swarmSize mapFun]
   "Synchronous psa with either pmap (parallel) or map (non-parallel) "
   (alter-var-root #'running (constantly false))
-  (loop [swarmSync (createRandomSwarm 10240)]
+  (loop [swarmSync (createRandomSwarm swarmSize)]
     (if (not= (:iterations (first swarmSync)) iter)
       (do(println (:iterations (first swarmSync)))
          (recur (doall (mapFun updateParticle swarmSync))))
