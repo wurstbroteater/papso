@@ -8,11 +8,6 @@
 (def running true)
 (defn evalFunction [x] (atf/h3 x))                          ;; default analytical test function is h3
 
-(defn resetGlobals []
-  (alter-var-root #'running (constantly true))
-  (alter-var-root #'groupBest (constantly (map agent (repeatedly groupCount randomPosition))))
-  (alter-var-root #'swarm (constantly (map agent (createRandomSwarm 1024)))))
-
 (comment
 (defn changeEvalFunction [f] (case f
       "h1" (alter-var-root
@@ -91,6 +86,11 @@
 
 (defn stopPs []
   (alter-var-root #'running (constantly false)))
+
+(defn resetGlobals []
+  (alter-var-root #'running (constantly true))
+  (alter-var-root #'groupBest (constantly (map agent (repeatedly groupCount randomPosition))))
+  (alter-var-root #'swarm (constantly (map agent (createRandomSwarm 1024)))))
 
 (defn psSync [iter swarmSize mapFun]
   "Synchronous psa with either pmap (parallel) or map (non-parallel) "
