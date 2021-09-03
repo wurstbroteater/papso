@@ -19,16 +19,16 @@
                     (partition 2 xs))))
   
 
-(defn delayedStart [foo] "delays the start of PAPSO"
+(defn delayedStart [] "delays the start of PAPSO"
   (Thread/sleep 2000)
-  (psa/ps))
+  (psa/ps 1))
 (defn setup [] ;; returns state
   (q/resize-sketch (* viewSize (Math/min viewsPerLine (double( quot psa/dimensions 2))))
                    (* viewSize (Math/ceil(/ ( quot psa/dimensions 2) viewsPerLine))))
   (q/frame-rate -1)
   (q/background 0)
   (q/stroke 255 255 255)
-  (psa/ps))
+  (delayedStart))
 
 (defn draw-state []
   "
@@ -60,5 +60,5 @@
     :draw draw-state))
 (psa/setSwarmProperties 6 10 512 600 (fn [a] (-(atf/h3 a))))
 (psa/resetPs)
-(psa/ps 1)
+
 (visualRun)
