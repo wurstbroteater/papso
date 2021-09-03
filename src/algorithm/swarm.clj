@@ -6,6 +6,8 @@
 (def dimensions 2)
 (def groupCount 20)
 (def running true)
+(def swarmSize 1024)
+(def spawnRange 600)
 (defn evalFunction [x] (atf/h3 x))                          ;; default analytical test function is h3
 
 (comment
@@ -28,7 +30,6 @@
 )
 
 ;;(def landscape (map (fn [line] (map read-string (str/split line #"\t"))) (str/split (slurp "./resources/landscape.tsv") #"\n")))
-(def size 300)
 
 
 (defn fitness [position]                                    ;; calculates fitness for a point
@@ -36,7 +37,7 @@
 ;;  (nth (nth landscape (int (last position) ) '(-100)) (int (first position)) -100 ))
 
 
-(defn randomPosition [] (repeatedly dimensions #(rand size)))
+(defn randomPosition [] (repeatedly dimensions #(-(rand (* spawnRange 2)) spawnRange)))
 
 (defn createRandomParticle "creates a particle for pso" []
   (def position (randomPosition))
@@ -87,12 +88,30 @@
 (defn stopPs []
   (alter-var-root #'running (constantly false)))
 
-(defn resetGlobals []
+(defn resetPs [] "resets swarm"
+  (alter-var-root #'running (constantly false))
+  (Thread/sleep 1000)
   (alter-var-root #'running (constantly true))
   (alter-var-root #'groupBest (constantly (map agent (repeatedly groupCount randomPosition))))
-  (alter-var-root #'swarm (constantly (map agent (createRandomSwarm 1024)))))
+  (alter-var-root #'swarm (constantly (map agent (createRandomSwarm swarmSize)))))
 
-(defn psSync [iter swarmSize mapFun]
+(defn setSwarmProperties [dim gCount sSize sRange fFun]
+  "dim: swarm dimensions"
+  "gCount: group count (1 for global best)"
+  "sSize: swarm particle count"
+  "sRange: swarm spawn range (uniform)"
+  "fFun: fitness evaluate function"
+  (alter-var-root #'dimensions (constantly dim))
+  (alter-var-root #'groupCount (constantly gCount))
+  (alter-var-root #'swarmSize (constantly sSize))
+  (alter-var-root #'spawnRange (constantly sRange))
+  (alter-var-root 
+   (var fitness)                  ; var to alter
+   (fn [f]                    ; fn to apply to the var's value
+     (fn [n]                  ; returns a new fn wrapping old fn
+       (fFun n)))))
+
+(defn psSync [iter mapFun]
   "Synchronous psa with either pmap (parallel) or map (non-parallel) "
   (alter-var-root #'running (constantly false))
   (loop [swarmSync (createRandomSwarm swarmSize)]
