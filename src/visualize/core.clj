@@ -58,7 +58,8 @@
     :size [10 10] ;; set size in setup, prevents a window manager bug
     :setup setup
     :draw draw-state))
-(psa/setSwarmProperties 6 10 512 600 (fn [a] (-(atf/h3 a))))
+;; dim gCount sSize sRange fFun
+(psa/setSwarmProperties 23 10 512 600 (fn [a] (-(atf/h3 a))))
 (psa/resetPs)
 
 (visualRun)
