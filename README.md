@@ -21,5 +21,6 @@ gnuplot should be visible in PATH
 ;; or
 (start numberOfIterations) ;; inits a swarm with 32 particles
 ```
-
+## TODO
+update Readme sometime in the future
 ## SEND COFFEE!
