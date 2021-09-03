@@ -3,15 +3,32 @@
 (require '[quil.core :as q] '[quil.middleware :as m])
 (require '[algorithm.swarm :as psa])
 (require '[testfunction.core :as atf])
+(require '[utility.core :as util])
 (def hack (agent 0)) ;; allows delayed execution of ps
+(def viewSize 300)
+(def maxX (.getWidth(.getScreenSize (java.awt.Toolkit/getDefaultToolkit)))) ;; 2560
+(def viewsPerLine (Math/floor(/ maxX viewSize)))
 
-(def heatMap )
+(defn dimensionIndexToOffset [index]
+  (util/mulV (repeat viewSize) [(mod index viewsPerLine)
+                                (quot index viewsPerLine)]))
+
+(defn transformPosition [xs] "transforms a position into multiple 2 dimensional vectors"
+  (map-indexed (fn [i xs] (util/addV xs (dimensionIndexToOffset i)) )
+               (map (fn [xs] (util/addV (repeat (/ viewSize 2)) (util/mulV xs (repeat (/ viewSize (* 2 psa/spawnRange))))))
+                    (partition 2 xs))))
+  
+
+(defn delayedStart [foo] "delays the start of PAPSO"
+  (Thread/sleep 2000)
+  (psa/ps))
 (defn setup [] ;; returns state
-  (q/resize-sketch 675 675)
+  (q/resize-sketch (* viewSize (Math/min viewsPerLine (double( quot psa/dimensions 2))))
+                   (* viewSize (Math/ceil(/ ( quot psa/dimensions 2) viewsPerLine))))
   (q/frame-rate -1)
   (q/background 0)
   (q/stroke 255 255 255)
-  (send hack psa/ps))
+  (psa/ps))
 
 (defn draw-state []
   "
@@ -20,15 +37,20 @@
   - draws frame onto the screen
   "
   (q/background 0)
+  (def position (apply concat (map transformPosition (map :position (map deref psa/swarm)))))
+  (def best (apply concat (map transformPosition (map :best (map deref psa/swarm)))))
+  (def groupBest (apply concat (map transformPosition (map deref psa/groupBest))))
   (q/stroke 0 255 0)
-  (doseq [[x y] (map :position (map deref psa/swarm))]
-    (q/point (* 1.5 (+ x 150)) (* 1.5(+ y 150))))
+  (q/stroke-weight 3) ;; set pointsize for position and best
+  (doseq [[x y] position]
+    (q/point x y ))
   (q/stroke 255 0 0)
-  (doseq [[x y] (map :best (map deref psa/swarm))]
-    (q/point (* 1.5 (+ x 150)) (* 1.5(+ y 150))))
+  (doseq [[x y] best]
+    (q/point x y ))
   (q/stroke 255 255 255)
-  (doseq [[x y] (map deref psa/groupBest)]
-    (q/point (* 1.5 (+ x 150)) (* 1.5(+ y 150)))))
+  (q/stroke-weight 5) ;; set pointsize for groupbest to 5
+  (doseq [[x y] groupBest]
+    (q/point x y )))
 
 (defn visualRun [& args]
   (q/sketch
@@ -36,3 +58,7 @@
     :size [10 10] ;; set size in setup, prevents a window manager bug
     :setup setup
     :draw draw-state))
+(psa/setSwarmProperties 6 10 512 600 (fn [a] (-(atf/h3 a))))
+(psa/resetPs)
+(psa/ps 1)
+(visualRun)

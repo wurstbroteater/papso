@@ -8,33 +8,9 @@
 (def running true)
 (def swarmSize 1024)
 (def spawnRange 600)
-(defn evalFunction [x] (atf/h3 x))                          ;; default analytical test function is h3
-
-(comment
-(defn changeEvalFunction [f] (case f
-      "h1" (alter-var-root
-             (var evalFunction)                             ;; var to alter
-             (fn [f]                                        ;; fn to apply to the var's value
-               (fn [x]                                      ;; returns a new fn wrapping old fn
-                (atf/h1 x))))
-      "h2" (alter-var-root
-             (var evalFunction)
-             (fn [f]
-               (fn [x]
-                 (atf/h2 x))))
-      (alter-var-root                                       ;; default case is h3
-        (var evalFunction)
-        (fn [f]
-          (fn [x]
-            (atf/h3 x))))))
-)
-
-;;(def landscape (map (fn [line] (map read-string (str/split line #"\t"))) (str/split (slurp "./resources/landscape.tsv") #"\n")))
-
 
 (defn fitness [position]                                    ;; calculates fitness for a point
-  (- (evalFunction position)))
-;;  (nth (nth landscape (int (last position) ) '(-100)) (int (first position)) -100 ))
+  (- (atf/h3 position)))
 
 
 (defn randomPosition [] (repeatedly dimensions #(-(rand (* spawnRange 2)) spawnRange)))
@@ -61,7 +37,7 @@
 
 (defn updateParticle
   [particle]
-  ;;(Thread/sleep 24)                                         ;; gives priority to render thread - comment to get max performance
+  (Thread/sleep 24)                                         ;; gives priority to render thread - comment to get max performance
   (when running
     (send-off *agent* updateParticle))                      ;; "recursive" call
   (def velocity (util/addV
@@ -81,7 +57,7 @@
 (def swarm (map agent (createRandomSwarm 1024)))
 
 (defn ps [foo]
-  ;;(Thread/sleep 2000)
+  (Thread/sleep 2000)
   (alter-var-root #'running (constantly true))
   (doall (map (fn [a] (send a updateParticle)) swarm)))
 
