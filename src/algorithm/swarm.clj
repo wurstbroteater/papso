@@ -37,7 +37,7 @@
 
 (defn updateParticle
   [particle]
-  (Thread/sleep 24)                                         ;; gives priority to render thread - comment to get max performance
+  ;;(Thread/sleep 24)                                         ;; gives priority to render thread - comment to get max performance
   (when running
     (send-off *agent* updateParticle))                      ;; "recursive" call
   (def velocity (util/addV
@@ -56,7 +56,7 @@
 
 (def swarm (map agent (createRandomSwarm 1024)))
 
-(defn ps [foo]
+(defn ps []
   (alter-var-root #'running (constantly true))
   (doall (map (fn [a] (send a updateParticle)) swarm)))
 

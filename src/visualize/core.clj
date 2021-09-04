@@ -19,16 +19,16 @@
                     (partition 2 xs))))
   
 
-(defn delayedStart [] "delays the start of PAPSO"
+(defn delayedStart [a] "dummy parameter, delays the start of PAPSO"
   (Thread/sleep 2000)
-  (psa/ps 1))
+  (psa/ps))
 (defn setup [] ;; returns state
   (q/resize-sketch (* viewSize (Math/min viewsPerLine (double( quot psa/dimensions 2))))
                    (* viewSize (Math/ceil(/ ( quot psa/dimensions 2) viewsPerLine))))
   (q/frame-rate -1)
   (q/background 0)
   (q/stroke 255 255 255)
-  (delayedStart))
+  (send hack delayedStart))
 
 (defn draw-state []
   "
