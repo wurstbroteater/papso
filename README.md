@@ -11,7 +11,7 @@ The implementation of the algorithm written in the paper of Koh et al. (see lite
 ## Usage
 ### Algorithm
 
-Init example:
+#### Init example:
 ```clojure
 (require '[algorithm.swarm :as psa])
 (require '[testfunction.core :as atf])
@@ -24,8 +24,34 @@ Init example:
 (defn testFunction [x] (atf/h1 x)) ;; Function used to evaluate fitness of a position
 
 (psa/setSwarmProperties dim gCount sSize sRange testFunction) ;; Set new swarm properties
-(psa/resetSwarm) ;; Shutdown old swarm, load new properties and start swarm
+(psa/resetSwarm) ;; Create swarm with new properties
+...
 ```
+Until this point you haven't started the algorithm. Start with one of the following methods:
+
+Starts algorithm single threaded:
+```clojure
+...
+(def outSwarm (psa/psSync nIter map))
+```
+
+Starts algorithm multi-threaded aka parallel:
+```clojure
+...
+(def outSwarm (psa/psSync nIter pmap))
+```
+
+Starts algorithm multi-threaded with asynchronous updates (papso):
+**WARNING:** Do not use the output of the `ps` method.
+```clojure
+...
+(def discardSwarm (psa/ps))
+```
+1. Use `(psa/stopPs)` to stop papso
+2. Use `(sort-by psa/fitness (map deref psa/groupBest))` to retrieve list with swarm best positions 
+
+
+
 or examples can be found in `src/benchmark/core.clj`
 
 ## Troubleshooting
