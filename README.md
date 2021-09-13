@@ -42,14 +42,14 @@ Starts algorithm multi-threaded aka parallel:
 ```
 
 Starts algorithm multi-threaded with asynchronous updates (papso):
-**WARNING:** Do not use the output of the `ps` method.
+This time we retrieve a reference to the swarm which we can use to monitor progress of the individuals.
 ```clojure
 ...
-(def discardSwarm (psa/ps))
+(def viewSwarm (psa/ps))
 ```
-1. Use `(psa/stopPs)` to stop papso
-2. Use `(sort-by psa/fitness (map deref psa/groupBest))` to retrieve list with swarm best positions 
+Use `(psa/stopPs)` to stop papso.
 
+You can use `(sort-by psa/fitness (map deref psa/groupBest))` to retrieve a list of swarm best positions
 
 
 or examples can be found in `src/benchmark/core.clj`
