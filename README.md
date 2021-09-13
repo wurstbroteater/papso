@@ -42,19 +42,27 @@ Starts algorithm multi-threaded aka parallel:
 ```
 
 Starts algorithm multi-threaded with asynchronous updates (papso):
-This time we retrieve a reference to the swarm which we can use to monitor progress of the individuals.
 ```clojure
 ...
 (def viewSwarm (psa/ps))
 ```
+This time we retrieve a reference to the swarm which we can use to monitor progress of the individuals.
 Use `(psa/stopPs)` to stop papso.
 
 You can use `(sort-by psa/fitness (map deref psa/groupBest))` to retrieve a list of swarm best positions
 
+More examples can be found in `src/benchmark/core.clj`
 
-or examples can be found in `src/benchmark/core.clj`
+#### Visual Run example
+Initialize the swarm as described above, but don't execute the PSO algorithm. Instead you call visualRun.
+```clojure
+(require '[algorithm.swarm :as psa])
+(require '[testfunction.core :as atf])
+(require '[visualize.core :as v])
+(psa/setSwarmProperties 16 10 512 600 (fn [a] (-(atf/h3 a))))
+(psa/resetPs)
+(v/visualRun)
+```
+Snce the "render thread" is in competition with all those swarm particles you can uncomment `(Thread/sleep 24)` in the `updateParticle` method in `src/algorithm/swarm.clj`. This will cause the swarm to slow down and give a bit more priority to the "render thread" (tbh: this is more or less a hack)
 
-## Troubleshooting
-In case the visulalisation does not show, you can try to add `(Thread/sleep 24)` as first command in the `updateParticle` method in `src/algorithm/swarm.clj
-`
 ## SEND COFFEE!
