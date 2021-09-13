@@ -5,6 +5,7 @@ The implementation of the algorithm written in the paper of Koh et al. (see lite
 
 ## Requirements
  - Clojure 1.10.3 or higher
+ - Lein [https://leiningen.org/](https://leiningen.org/)
  - Optional: Java 1.8 or higher
 
 ## Usage
