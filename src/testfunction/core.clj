@@ -1,6 +1,6 @@
 (ns testfunction.core)
 (require '[utility.core :as util])
-
+(require '[clojure.string :as str])
 ;;----------------------------- Analytical Test Problem Functions
 ;; x_i in [-100, 100]
 (defn h1 [x1 x2]
@@ -54,3 +54,52 @@
    (def sumOut (sumH4 xs d))
    (def productOut (productH4 xs))
    (+ (- sumOut productOut) 1)))
+
+(defn log2 [n]
+  (/ (Math/log n) (Math/log 2)))
+
+(defn pow2 [n]
+  (bit-shift-left 1 n))
+
+(defn isDigit [char]
+  (.contains [\- \1 \2 \3 \4 \5 \6 \7 \8 \9 \0] char))
+
+(defn applyAssignment [formula assignment]
+  "resturns how many clauses are sat (range from 0 to 1)"
+  (/ (reduce (fn [result term]
+               ((if (reduce (fn [termResult literal]
+                              (or termResult
+                                  ((if (> literal 0) identity not)
+                                   (nth assignment  (- (Math/abs literal) 1) false))))
+                            false
+                            term)
+                  inc
+                  identity)
+                result))
+          0
+          formula)
+     (count formula)))
+
+(defn getAssignmentFromCoordinate [pos]
+  "calculates assignment based on position"
+  (def pos (map int pos))
+  (def dimensions (* 2(Math/ceil(log2(inc (apply max pos))))))
+  (map
+   (fn [dim]
+     (>= (mod (+ (nth pos (mod dim 2))
+                 (pow2 (int (/ dim 2)))
+                 -1)
+              (pow2 (+ 2 (int (/ dim 2)))))
+         (pow2 (inc (int (/ dim 2))))))
+   (range dimensions)))
+
+;; solve sat problem on a k-v plane
+(defn kv-fitness [formula pos]
+  "calculates formula at position xs"
+  "formula is the first argument to allow for currying :D"
+  (if (and (> (first pos) 0) (>  (last pos) 0))
+    (applyAssignment formula (getAssignmentFromCoordinate pos))
+    -1))
+
+(defn parseDimacs [url]
+  (doall(map (fn [line] (map #(Integer/parseInt %) (drop-last(str/split line #" ")))) (filter (fn [line] (isDigit (first line))) (str/split (slurp url) #"\n")))))
