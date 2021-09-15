@@ -5,7 +5,7 @@
 (require '[testfunction.core :as atf])
 (require '[utility.core :as util])
 (def hack (agent 0)) ;; allows delayed execution of ps
-(def viewSize 600)
+(def viewSize 300)
 (def maxX (.getWidth(.getScreenSize (java.awt.Toolkit/getDefaultToolkit)))) ;; 2560
 (def viewsPerLine (Math/floor(/ maxX viewSize)))
 
@@ -60,7 +60,6 @@
     :draw draw-state))
 ;; dim gCount sSize sRange fFun
 (psa/setSwarmProperties 23 10 512 600 (fn [a] (-(atf/h3 a))))
-;;(psa/setSwarmProperties 2 5 512 1024 (fn [a] (atf/kv-fitness (atf/parseDimacs "resources/cnf.dimacs") a)))
-(first(psa/resetPs))
+(psa/resetPs)
 
 (visualRun)

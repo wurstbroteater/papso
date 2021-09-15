@@ -13,7 +13,7 @@
   (- (atf/h3 position)))
 
 
-(defn randomPosition [] (repeatedly dimensions #(-(rand (* spawnRange 2)) spawnRange (- 0 spawnRange))))
+(defn randomPosition [] (repeatedly dimensions #(-(rand (* spawnRange 2)) spawnRange)))
 
 (defn createRandomParticle "creates a particle for pso" []
   (def position (randomPosition))
@@ -37,7 +37,7 @@
 
 (defn updateParticle
   [particle]
-  (Thread/sleep 24)                                         ;; gives priority to render thread - comment to get max performance
+  ;;(Thread/sleep 24)                                         ;; gives priority to render thread - comment to get max performance
   (when running
     (send-off *agent* updateParticle))                      ;; "recursive" call
   (def velocity (util/addV
