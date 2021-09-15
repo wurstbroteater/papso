@@ -2,7 +2,7 @@
 
 ![visualized swarm using 8 dimenions](https://github.com/wurstbroteater/papso/blob/main/doc/logo.png?raw=true)
 
-The implementation of the algorithm written in the paper of Koh et al. (see literature folder or click [here](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1769316/)). This project was created using IntelliJ 2021.2 with Cursive Plugin 1.10.3
+The implementation of the algorithm written in the paper of Koh et al. (see literature folder or click [here](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1769316/)). This project was created using IntelliJ 2021.2 with Cursive Plugin 1.10.3 This project is part of the course 'Praktische Algorithmen der Bioinformatik und Computerlinguistik mit Lisp - SoSe 2021'at Ulm University.
 
 ## Requirements
  - Clojure 1.10.3 or higher
