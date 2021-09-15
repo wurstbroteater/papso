@@ -1,6 +1,6 @@
 # Parallel Asynchronous Particle Swarm Optimization  [![Build Status](https://app.travis-ci.com/wurstbroteater/papso.svg?token=p8UbHeQhFdd4xZrZhbxs&branch=main)](https://app.travis-ci.com/wurstbroteater/papso)
 
-![visualized swarm using 8 dimenions](https://github.com/wurstbroteater/papso/blob/main/doc/logo.png?raw=true)
+![visualized swarm using 8 dimenions](https://github.com/wurstbroteater/papso/tree/main/doc/logo.png)
 
 The implementation of the algorithm written in the paper of Koh et al. (see literature folder or click [here](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1769316/)). This project was created using IntelliJ 2021.2 with Cursive Plugin 1.10.3
 
