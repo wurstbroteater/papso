@@ -28,12 +28,18 @@
 (defn createRandomSwarm [population_size]                   ;; create a random swarm
   (repeatedly population_size createRandomParticle))
 
-(def groupBest (map agent (repeatedly groupCount randomPosition)))
+(defn createGroupBest [] ;; create random group best values
+  (def positions (repeatedly groupCount randomPosition))
+  (map atom (map (fn [position] {:position position :fitness (fitness position)}) positions)))
+
+(def groupBest (createGroupBest))
 
 (defn updateGroupBest [groupId position]
-  (if (> (fitness position) (fitness (deref (nth groupBest groupId))))
-    (do (send (nth groupBest groupId) (fn [a] position)) position)
-    (deref (nth groupBest groupId))))
+  (swap! (nth groupBest groupId) (fn [groupBest]
+                                   (def score (fitness position))
+                                   (if (> score (:fitness groupBest))
+                                     {:position position :fitness score}
+                                     groupBest))))
 
 (defn updateParticle
   [particle]
@@ -43,7 +49,7 @@
   (def velocity (util/addV
                   (util/mulV (repeat 1) (:velocity particle)) ;; repeat 1's allow "on-the-fly" modification
                   (util/mulV (repeat 1) (repeat (:stubborness particle)) (util/subV (:best particle) (:position particle)))
-                  (util/mulV (repeat 1) (repeat (- 1 (:stubborness particle))) (util/subV (updateGroupBest (:groupId particle) (:position particle)) (:position particle)))))
+                  (util/mulV (repeat 1) (repeat (- 1 (:stubborness particle))) (util/subV (:position (updateGroupBest (:groupId particle) (:position particle))) (:position particle)))))
   (def position (util/addV (:position particle) (util/mulV (repeat 0.01) velocity)))
 
   (def best (last (sort-by fitness [(:best particle) position])))
@@ -67,7 +73,7 @@
   (alter-var-root #'running (constantly false))
   (Thread/sleep 1000)
   (alter-var-root #'running (constantly true))
-  (alter-var-root #'groupBest (constantly (map agent (repeatedly groupCount randomPosition))))
+  (alter-var-root #'groupBest (constantly (createGroupBest)))
   (alter-var-root #'swarm (constantly (map agent (createRandomSwarm swarmSize)))))
 
 (defn setSwarmProperties [dim gCount sSize sRange fFun]

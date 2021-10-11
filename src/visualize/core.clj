@@ -39,7 +39,7 @@
   (q/background 0)
   (def position (apply concat (map transformPosition (map :position (map deref psa/swarm)))))
   (def best (apply concat (map transformPosition (map :best (map deref psa/swarm)))))
-  (def groupBest (apply concat (map transformPosition (map deref psa/groupBest))))
+  (def groupBest (apply concat (map transformPosition (map :position (map deref psa/groupBest)))))
   (q/stroke 0 255 0)
   (q/stroke-weight 3) ;; set pointsize for position and best
   (doseq [[x y] position]

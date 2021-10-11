@@ -5,7 +5,7 @@
 (require '[clojure.pprint :as pp])
 
 (defn getBest []
-  (last (sort-by psa/fitness (map deref psa/groupBest))))
+  (last (sort-by :fitness (map deref psa/groupBest))))
 
 ;;---------------------------- Benchmark for analytical test function h1
 (def dim 2)                                                 ;; Dimension
