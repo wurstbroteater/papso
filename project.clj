@@ -6,6 +6,4 @@
   :dependencies [[org.clojure/clojure "1.10.1"]
                  [quil "3.1.0"]]
   :dev-dependencies [[speclj "3.3.1"]]
-  :repl-options {:init-ns algorithm.core}
-  :main benchmark.scaling
-  :aot [benchmark.scaling])
+  :repl-options {:init-ns algorithm.core}) 

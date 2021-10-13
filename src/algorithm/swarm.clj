@@ -4,9 +4,9 @@
 
 ;;global vars
 (def dimensions 2)
-(def groupCount 20)
+(def groupCount 4)
 (def running true)
-(def swarmSize 1024)
+(def swarmSize 16)
 (def spawnRange 600)
 
 (defn fitness [position]                                    ;; calculates fitness for a point
@@ -30,16 +30,16 @@
 
 (defn createGroupBest [] ;; create random group best values
   (def positions (repeatedly groupCount randomPosition))
-  (map atom (map (fn [position] {:position position :fitness (fitness position)}) positions)))
+  (map agent (map (fn [position] {:position position :fitness (fitness position)}) positions)))
 
 (def groupBest (createGroupBest))
 
 (defn updateGroupBest [groupId position]
-  (swap! (nth groupBest groupId) (fn [groupBest]
-                                   (def score (fitness position))
-                                   (if (> score (:fitness groupBest))
-                                     {:position position :fitness score}
-                                     groupBest))))
+  (def score (fitness position))
+  (def gBest (nth groupBest groupId))
+  (if (> score (:fitness (deref gBest)))
+    (do (send gBest (fn [a] {:position position :fitness score})) position)
+    (:position (deref gBest))))
 
 (defn updateParticle
   [particle]
@@ -49,7 +49,7 @@
   (def velocity (util/addV
                   (util/mulV (repeat 1) (:velocity particle)) ;; repeat 1's allow "on-the-fly" modification
                   (util/mulV (repeat 1) (repeat (:stubborness particle)) (util/subV (:best particle) (:position particle)))
-                  (util/mulV (repeat 1) (repeat (- 1 (:stubborness particle))) (util/subV (:position (updateGroupBest (:groupId particle) (:position particle))) (:position particle)))))
+                  (util/mulV (repeat 1) (repeat (- 1 (:stubborness particle))) (util/subV (updateGroupBest (:groupId particle) (:position particle)) (:position particle)))))
   (def position (util/addV (:position particle) (util/mulV (repeat 0.01) velocity)))
 
   (def best (last (sort-by fitness [(:best particle) position])))
