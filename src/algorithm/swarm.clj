@@ -30,16 +30,18 @@
 
 (defn createGroupBest [] ;; create random group best values
   (def positions (repeatedly groupCount randomPosition))
-  (map agent (map (fn [position] {:position position :fitness (fitness position)}) positions)))
+  (map atom (map (fn [position] {:position position :fitness (fitness position)}) positions)))
 
 (def groupBest (createGroupBest))
 
 (defn updateGroupBest [groupId position]
   (def score (fitness position))
   (def gBest (nth groupBest groupId))
-  (if (> score (:fitness (deref gBest)))
-    (do (send gBest (fn [a] {:position position :fitness score})) position)
-    (:position (deref gBest))))
+  (def dgBest @gBest)
+  (if (> score (:fitness dgBest))
+    (do (reset! gBest {:position position :fitness score});;(fn [a] {:position position :fitness score}))
+        position)
+    (:position dgBest)))
 
 (defn updateParticle
   [particle]
