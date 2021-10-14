@@ -3,10 +3,10 @@
 (require '[testfunction.core :as atf])
 
 ;;global vars
-(def dimensions 2)
+(def dimensions 16)
 (def groupCount 4)
 (def running true)
-(def swarmSize 16)
+(def swarmSize 128)
 (def spawnRange 600)
 
 (defn fitness [position]                                    ;; calculates fitness for a point
@@ -30,7 +30,7 @@
 
 (defn createGroupBest [] ;; create random group best values
   (def positions (repeatedly groupCount randomPosition))
-  (map atom (map (fn [position] {:position position :fitness (fitness position)}) positions)))
+  (map agent (map (fn [position] {:position position :fitness (fitness position)}) positions)))
 
 (def groupBest (createGroupBest))
 
@@ -39,7 +39,7 @@
   (def gBest (nth groupBest groupId))
   (def dgBest @gBest)
   (if (> score (:fitness dgBest))
-    (do (reset! gBest {:position position :fitness score});;(fn [a] {:position position :fitness score}))
+    (do (send gBest (fn [a] {:position position :fitness score}))
         position)
     (:position dgBest)))
 
@@ -53,7 +53,6 @@
                   (util/mulV (repeat 1) (repeat (:stubborness particle)) (util/subV (:best particle) (:position particle)))
                   (util/mulV (repeat 1) (repeat (- 1 (:stubborness particle))) (util/subV (updateGroupBest (:groupId particle) (:position particle)) (:position particle)))))
   (def position (util/addV (:position particle) (util/mulV (repeat 0.01) velocity)))
-
   (def best (last (sort-by fitness [(:best particle) position])))
   {:groupId     (:groupId particle)
    :iterations  (inc (:iterations particle))

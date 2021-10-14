@@ -9,10 +9,13 @@
 (defn -main [& args]
   (def dTime (Integer/parseInt (first args)))
   (def dim (Integer/parseInt (second args)))
-  (psa/setSwarmProperties dim 8 512 600 (fn [position] (- (atf/h3 position))))
+  (psa/setSwarmProperties 4 10 512 600 (fn [a] (-(atf/h3 a))))
+  ;;(psa/setSwarmProperties dim 8 512 600 (fn [position] (- (atf/h3 position))))
   (psa/resetPs)
   (first (psa/ps))
   (Thread/sleep dTime)
   (psa/stopPs)
-  (println (str (apply + (map :iterations (map deref psa/swarm)))))
-  (System/exit 0))
+  (println (str (apply + (map :iterations (map deref psa/swarm))))))
+  ;;(System/exit 0))
+
+(-main "24000" "16")
