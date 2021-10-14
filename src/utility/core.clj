@@ -49,3 +49,10 @@
    (equal? x y 0.001))
   ([x y eps]
    (< (Math/abs (- x y)) eps)))
+
+(defn cart [colls] ;; carthesian product of n lists
+  (if (empty? colls)
+    '(())
+    (for [more (cart (rest colls))
+          x (first colls)]
+      (cons x more))))

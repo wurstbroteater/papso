@@ -5,7 +5,7 @@
 (require '[testfunction.core :as atf])
 (require '[utility.core :as util])
 (def hack (agent 0)) ;; allows delayed execution of ps
-(def viewSize 300)
+(def viewSize 768)
 (def maxX (.getWidth(.getScreenSize (java.awt.Toolkit/getDefaultToolkit)))) ;; 2560
 (def viewsPerLine (Math/floor(/ maxX viewSize)))
 
@@ -22,6 +22,7 @@
 (defn delayedStart [a] "dummy parameter, delays the start of PAPSO"
   (Thread/sleep 2000)
   (psa/ps))
+
 (defn setup [] ;; returns state
   (q/resize-sketch (* viewSize (Math/min viewsPerLine (double( quot psa/dimensions 2))))
                    (* viewSize (Math/ceil(/ ( quot psa/dimensions 2) viewsPerLine))))
@@ -39,7 +40,9 @@
   (q/background 0)
   (def position (apply concat (map transformPosition (map :position (map deref psa/swarm)))))
   (def best (apply concat (map transformPosition (map :best (map deref psa/swarm)))))
-  (def groupBest (apply concat (map transformPosition (map :position (map deref psa/groupBest)))))
+  (def groupBest (apply concat (map transformPosition (map :position (if (= :partition psa/groupMode)
+                                                                       (map (fn [a] (deref (last a))) psa/groupBest)
+                                                                       (map deref psa/groupBest))))))
   (q/stroke 0 255 0)
   (q/stroke-weight 3) ;; set pointsize for position and best
   (doseq [[x y] position]
@@ -59,8 +62,7 @@
     :setup setup
     :draw draw-state))
 ;; dim gCount sSize sRange fFun
-(psa/setSwarmProperties 23 10 512 600 (fn [a] (-(atf/h3 a))))
+(psa/setSwarmProperties 2 8 1024 600 (fn [a] (-(atf/h3 a))))
 (psa/resetPs)
 
 (visualRun)
-

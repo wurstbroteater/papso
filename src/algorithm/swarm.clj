@@ -1,13 +1,13 @@
 (ns algorithm.swarm)
 (require '[utility.core :as util])
 (require '[testfunction.core :as atf])
-
 ;;global vars
-(def dimensions 16)
-(def groupCount 4)
+(def dimensions 1)
+(def groupCount 1)
 (def running true)
-(def swarmSize 128)
+(def swarmSize 3)
 (def spawnRange 600)
+;;(def groupMode :partition) ;; uncomment to partition space in (groupSize x groupSize)^dimensions many regions; recommended that #regions << #particles (low dimensionality)
 
 (defn fitness [position]                                    ;; calculates fitness for a point
   (- (atf/h3 position)))
@@ -28,28 +28,54 @@
 (defn createRandomSwarm [population_size]                   ;; create a random swarm
   (repeatedly population_size createRandomParticle))
 
+
+(defn createGroupBestPartition [] ;; creates a groupsize x .. x  groupsize grid over the fitness landscape
+  (def groupRange (/ (* 2 spawnRange) groupCount))
+  (assoc
+   (reduce ;; create groups over all coordinate combinations
+    (fn [a b]
+      (assoc a b
+             (do ;; create group data
+               (def position (map
+                              (fn [index] (-(+ (rand groupRange) (* index groupRange)) spawnRange))
+                                    b))
+               (atom {:position position :fitness (fitness position)}))))
+          (hash-map)
+          (util/cart (repeat dimensions (range groupCount)))) ;; all coordinate combinations
+   0 ;; append group id "0" for individuals outside of the landscape
+   (do
+     (def position (randomPosition))
+     (atom {:position position :fitness (fitness position)}))))
+
 (defn createGroupBest [] ;; create random group best values
-  (def positions (repeatedly groupCount randomPosition))
-  (map agent (map (fn [position] {:position position :fitness (fitness position)}) positions)))
+  (if (= groupMode :partition)
+    (createGroupBestPartition)
+    (do
+      (def positions (repeatedly groupCount randomPosition))
+      (map atom (map (fn [position] {:position position :fitness (fitness position)}) positions)))))
 
 (def groupBest (createGroupBest))
 
-(defn updateGroupBest [groupId position]
+(defn updateGroupBest [id position]
+  (def groupId (if (= groupMode :partition)
+                 (do
+                   (def groupRange (/ (* 2 spawnRange) groupCount))
+                   (map (fn [x] (int( quot (+ x spawnRange) groupRange))) position))
+                 id))
   (def score (fitness position))
-  (def gBest (nth groupBest groupId))
+  (def gBest (get groupBest groupId (get groupBest 0)))
   (def dgBest @gBest)
   (if (> score (:fitness dgBest))
-    (do (send gBest (fn [a] {:position position :fitness score}))
+    (do (reset! gBest {:position position :fitness score});;(fn [a] {:position position :fitness score}))
         position)
     (:position dgBest)))
 
 (defn updateParticle
   [particle]
-  ;;(Thread/sleep 24)                                         ;; gives priority to render thread - comment to get max performance
   (when running
-    (send-off *agent* updateParticle))                      ;; "recursive" call
+    (send *agent* updateParticle))                      ;; "recursive" call
   (def velocity (util/addV
-                  (util/mulV (repeat 1) (:velocity particle)) ;; repeat 1's allow "on-the-fly" modification
+                  (util/mulV (repeat 0.995) (:velocity particle)) ;; repeat 1's allow easy "on-the-fly" modification
                   (util/mulV (repeat 1) (repeat (:stubborness particle)) (util/subV (:best particle) (:position particle)))
                   (util/mulV (repeat 1) (repeat (- 1 (:stubborness particle))) (util/subV (updateGroupBest (:groupId particle) (:position particle)) (:position particle)))))
   (def position (util/addV (:position particle) (util/mulV (repeat 0.01) velocity)))
