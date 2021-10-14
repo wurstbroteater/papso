@@ -64,7 +64,6 @@ Initialize the swarm as described above, but don't execute the PSO algorithm. In
 (psa/resetPs)
 (v/visualRun)
 ```
-Since the "render thread" is in competition with all those swarm particles you can uncomment `(Thread/sleep 24)` in the `updateParticle` method in `src/algorithm/swarm.clj`. This will cause the swarm to slow down and give a bit more priority to the "render thread" (tbh: this is more or less a hacky way than a good way)
 
 **Legend:**
 - Green dot: A single particle
