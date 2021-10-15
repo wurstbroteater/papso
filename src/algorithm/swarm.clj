@@ -7,7 +7,8 @@
 (def running true)
 (def swarmSize 3)
 (def spawnRange 600)
-;;(def groupMode :partition) ;; uncomment to partition space in (groupSize x groupSize)^dimensions many regions; recommended that #regions << #particles (low dimensionality)
+(def groupMode :standard)
+;;(def groupMode :partition) ;; uncomment to partition space in groupSize^dimensions many regions; recommended that #regions << #particles (low dimensionality)
 
 (defn fitness [position]                                    ;; calculates fitness for a point
   (- (atf/h3 position)))
