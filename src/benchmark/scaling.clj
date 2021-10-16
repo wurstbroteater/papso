@@ -15,7 +15,7 @@
   (first (psa/ps))
   (Thread/sleep dTime)
   (psa/stopPs)
-  (println (str (apply + (map :iterations (map deref psa/swarm))))))
- ;; (System/exit 0))
+  (println (str (apply + (map :iterations (map deref psa/swarm)))))
+  (System/exit 0))
 
 ;;(-main "10000" "8")

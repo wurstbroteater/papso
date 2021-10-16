@@ -6,7 +6,7 @@
 (require '[utility.core :as util])
 (def hack (agent 0)) ;; allows delayed execution of ps
 (def viewSize 768)
-(def maxX (.getWidth(.getScreenSize (java.awt.Toolkit/getDefaultToolkit)))) ;; 2560
+(def maxX (* 0.66 (.getWidth(.getScreenSize (java.awt.Toolkit/getDefaultToolkit))))) ;; 2560
 (def viewsPerLine (Math/floor(/ maxX viewSize)))
 
 (defn dimensionIndexToOffset [index]
@@ -43,17 +43,18 @@
   (def groupBest (apply concat (map transformPosition (map :position (if (= :partition psa/groupMode)
                                                                        (map (fn [a] (deref (last a))) psa/groupBest)
                                                                        (map deref psa/groupBest))))))
+  (q/stroke 255 255 255)
+  (q/stroke-weight 5) ;; set pointsize for groupbest to 5
+  (doseq [[x y] groupBest]
+    (q/point x y ))
   (q/stroke 0 255 0)
   (q/stroke-weight 3) ;; set pointsize for position and best
   (doseq [[x y] position]
     (q/point x y ))
   (q/stroke 255 0 0)
   (doseq [[x y] best]
-    (q/point x y ))
-  (q/stroke 255 255 255)
-  (q/stroke-weight 5) ;; set pointsize for groupbest to 5
-  (doseq [[x y] groupBest]
     (q/point x y )))
+
 
 (defn visualRun [& args]
   (q/sketch
@@ -62,7 +63,8 @@
     :setup setup
     :draw draw-state))
 ;; dim gCount sSize sRange fFun
-(psa/setSwarmProperties 2 8 1024 600 (fn [a] (-(atf/h3 a))))
+;;(psa/setSwarmProperties 2 8 1024 600 (fn [a] (+(apply atf/h2 a))))
+(psa/setSwarmProperties 8 4 256 1 (fn [a] (-( atf/h3 a))))
 (psa/resetPs)
 
 (visualRun)
