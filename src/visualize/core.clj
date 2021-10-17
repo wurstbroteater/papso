@@ -5,8 +5,8 @@
 (require '[testfunction.core :as atf])
 (require '[utility.core :as util])
 (def hack (agent 0)) ;; allows delayed execution of ps
-(def viewSize 768)
-(def maxX (* 0.66 (.getWidth(.getScreenSize (java.awt.Toolkit/getDefaultToolkit))))) ;; 2560
+(def viewSize 300)
+(def maxX (* 0.5 (.getWidth(.getScreenSize (java.awt.Toolkit/getDefaultToolkit))))) ;; 2560
 (def viewsPerLine (Math/floor(/ maxX viewSize)))
 
 (defn dimensionIndexToOffset [index]
@@ -20,7 +20,7 @@
   
 
 (defn delayedStart [a] "dummy parameter, delays the start of PAPSO"
-  (Thread/sleep 2000)
+  (Thread/sleep 8000)
   (psa/ps))
 
 (defn setup [] ;; returns state
@@ -64,7 +64,9 @@
     :draw draw-state))
 ;; dim gCount sSize sRange fFun
 ;;(psa/setSwarmProperties 2 8 1024 600 (fn [a] (+(apply atf/h2 a))))
-(psa/setSwarmProperties 8 4 256 1 (fn [a] (-( atf/h3 a))))
-(psa/resetPs)
+(psa/setSwarmProperties 24 4 1024 500 (fn [a] (-( atf/h3 a))))
+(last(psa/resetPs))
 
 (visualRun)
+;;(last(psa/ps))
+;;(psa/stopPs)

@@ -76,7 +76,7 @@
   (when running
     (send *agent* updateParticle))                      ;; "recursive" call
   (def velocity (util/addV
-                  (util/mulV (repeat 1) (:velocity particle)) ;; repeat 1's allow easy "on-the-fly" modification
+                  (util/mulV (repeat 0.9999) (:velocity particle)) ;; repeat 1's allow easy "on-the-fly" modification
                   (util/mulV (repeat 1) (repeat (:stubborness particle)) (util/subV (:best particle) (:position particle)))
                   (util/mulV (repeat 1) (repeat (- 1 (:stubborness particle))) (util/subV (updateGroupBest (:groupId particle) (:position particle)) (:position particle)))))
   (def position (util/addV (:position particle) (util/mulV (repeat 0.01) velocity)))
